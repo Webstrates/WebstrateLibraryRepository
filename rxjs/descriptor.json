@@ -1,0 +1,10 @@
+{
+    "description": "RxJS is a library for composing asynchronous and event-based programs by using observable sequences.",
+    "dependencies": [
+    ],
+    "assets": [],
+    "version": "6.1.0",
+    "changelog": {},
+    "license": "Apache 2.0",
+    "documentationLink": "https://rxjs-dev.firebaseapp.com/api"
+}

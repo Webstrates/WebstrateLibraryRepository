@@ -1,0 +1,14 @@
+{
+    "description": "Golden Layout",
+    "dependencies": [
+        "#requirejs",
+        "#cQuery"
+    ],
+    "assets": [],
+    "version": "1.0",
+    "changelog": {
+        "1.0": "Initial version"
+    },
+    "documentationLink": "https://golden-layout.com/",
+    "license": "MIT"
+}

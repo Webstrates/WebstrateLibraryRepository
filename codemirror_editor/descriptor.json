@@ -1,0 +1,10 @@
+{
+    "description": "Codemirror Editor",
+    "dependencies": [
+        "#requirejs"
+    ],
+    "assets": [],
+    "version": "5.48.0",
+    "license": "MIT",
+    "documentationLink": "https://codemirror.net/doc/manual.html"
+}

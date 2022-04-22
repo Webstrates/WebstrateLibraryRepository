@@ -1,0 +1,10 @@
+{
+    "description": "A Markdown to HTML converter written in Javascript",
+    "dependencies": [
+        "#requirejs"
+    ],
+    "assets": [],
+    "version": "1.9.0",
+    "license": "MIT",
+    "documentationLink": "http://showdownjs.com/#!/documentation"
+}

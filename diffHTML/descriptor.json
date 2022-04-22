@@ -1,0 +1,8 @@
+{
+    "description": "A JavaScript diffing algorithm for DOM elements",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.0.0-beta.27",
+    "license": "MIT",
+    "documentationLink": "https://github.com/tbranyen/diffhtml/"
+}

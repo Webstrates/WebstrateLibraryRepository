@@ -1,0 +1,8 @@
+{
+    "description": "Ajax without XML, Asynchronous JavaScript And JSON(P)",
+    "dependencies": [],
+    "assets": [],
+    "license": "MIT",    
+    "version": "0.4.1",
+    "documentationLink": "http://krampstudio.com/aja.js/#samples"
+}

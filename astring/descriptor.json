@@ -1,0 +1,8 @@
+{
+    "description": "Tiny and fast JavaScript code generator from an ESTree-compliant AST.",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.6.0",
+    "license": "MIT",
+    "documentationLink": "https://github.com/davidbonnet/astring"
+}

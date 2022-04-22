@@ -1,0 +1,8 @@
+{
+    "description": "Pointer Events Polyfill",
+    "dependencies": [],
+    "assets": [],
+    "version": "0.4.3",
+    "license": "MIT",
+    "documentationLink": "https://github.com/jquery/PEP"
+}

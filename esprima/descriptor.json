@@ -1,0 +1,7 @@
+{
+    "description": "ECMAScript parsing infrastructure for multipurpose analysis",
+    "dependencies": [],
+    "assets": [],
+    "license": "BSD-2-Clause",
+    "documentationLink": "https://github.com/jquery/esprima"
+}

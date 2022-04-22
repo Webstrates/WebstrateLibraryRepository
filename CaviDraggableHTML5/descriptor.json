@@ -1,0 +1,10 @@
+{
+    "description": "CaviDraggableHTML5 makes HTML5 dnd api easy to use",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.0",
+    "changelog": {
+    },
+    "license": "Apache 2.0",
+    "documentationLink": ""
+}

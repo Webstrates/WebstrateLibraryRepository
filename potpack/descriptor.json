@@ -1,0 +1,10 @@
+{
+    "description": "Potpack library",
+    "dependencies": [
+    ],
+    "assets": [],
+    "version": "1.0.1",
+    "changelog": {},
+    "license": "ISC",
+    "documentationLink": "https://github.com/mapbox/potpack"
+}

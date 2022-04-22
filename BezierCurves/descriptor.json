@@ -1,0 +1,12 @@
+{
+    "description": "Utilities for working with Bezier curves",
+    "dependencies": [
+    ],
+    "assets": [],
+    "version": "1.0",
+    "changelog": {
+        "1.0": "Initial version"
+    },
+    "license":"MIT",
+    "documentationLink": "https://github.com/Pomax/bezierjs & https://github.com/soswow/fit-curves"
+}

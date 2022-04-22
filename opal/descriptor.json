@@ -1,0 +1,10 @@
+{
+    "description": "Opal, Ruby for javascript",
+    "dependencies": [
+        "#requirejs"
+    ],
+    "assets": [],
+    "version": "1.0.0",
+    "license": "MIT",
+    "documentationLink": "http://opalrb.com/docs/"
+}

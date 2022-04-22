@@ -1,0 +1,8 @@
+{
+    "description": "Data-Driven Documents (d3.js) graph engine",
+    "dependencies": [],
+    "assets": [],
+    "license": "BSD-2-Clause (ISC)",
+    "version": "6",
+    "documentationLink": "https://github.com/d3/d3"
+}

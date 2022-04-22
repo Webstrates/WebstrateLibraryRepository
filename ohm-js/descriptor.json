@@ -1,0 +1,8 @@
+{
+    "description": "ohm-js parser",
+    "dependencies": [],
+    "assets": [],
+    "version": "15.4.1",
+    "license": "MIT",
+    "documentationLink": "https://github.com/harc/ohm"
+}

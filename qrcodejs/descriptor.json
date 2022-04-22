@@ -1,0 +1,8 @@
+{
+    "description": "QR code generator",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.0.0",
+    "license": "MIT",
+    "documentationLink": "https://davidshimjs.github.io/qrcodejs/"
+}

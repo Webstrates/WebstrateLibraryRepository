@@ -1,0 +1,8 @@
+{
+    "description": "JavaScript Quadtree implementation",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.2",
+    "license": "MIT",
+    "documentationLink": "https://github.com/timohausmann/quadtree-js"
+}

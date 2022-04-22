@@ -1,0 +1,11 @@
+{
+    "description": "cQuery - Lightweight jQuery alternative",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.0",
+    "changelog": {
+        "1.0": "Initial version"
+    },
+    "documentationLink": "",
+    "license": "Apache 2.0"
+}

@@ -1,0 +1,10 @@
+{
+    "description": "Pixijs library",
+    "dependencies": [
+    ],
+    "assets": [],
+    "version": "6.0.2",
+    "changelog": {},
+    "license": "MIT",
+    "documentationLink": "https://www.pixijs.com"
+}

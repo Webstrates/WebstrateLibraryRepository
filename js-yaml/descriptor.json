@@ -1,0 +1,8 @@
+{
+    "description": "This is an implementation of YAML, a human-friendly data serialization language. Started as PyYAML port, it was completely rewritten from scratch. Now it's very fast, and supports 1.2 spec.",
+    "dependencies": [],
+    "assets": [],
+    "version": "4.1.0",
+    "license": "MIT",
+    "documentationLink": "https://github.com/nodeca/js-yaml"
+}

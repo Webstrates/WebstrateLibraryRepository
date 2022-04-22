@@ -1,0 +1,8 @@
+{
+    "description": "Acorn javascript parser",
+    "dependencies": [],
+    "assets": [],
+    "version": "8.0.4",
+    "license": "MIT",
+    "documentationLink": "https://github.com/acornjs/acorn"
+}

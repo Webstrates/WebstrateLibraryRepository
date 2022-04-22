@@ -1,0 +1,9 @@
+{
+    "description": "A JavaScript library for building visual programming editors.",
+    "dependencies": [
+    ],
+    "assets": [],
+    "version": "4.20201217.0",
+    "license": "Apache 2.0",
+    "documentationLink": "https://developers.google.com/blockly"
+}

@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Webstrate Library Repository</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div class="packages">
+            <wpm-package id="cQuery">
+                <script type="descriptor" src="cQuery/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/cQuery/1.0/caviQuery.min.js");
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/cQuery/1.0/caviQueryPlugins.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="CaviDraggableHTML5">
+                <script type="descriptor" src="CaviDraggableHTML5/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/CaviDraggableHTML5/1.0/draggable.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="CaviTouch">
+                <script type="descriptor" src="CaviTouch/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/CaviTouch/1.4/CaviTouch.min.js");
+                </script>
+            </wpm-package>   
+            <wpm-package id="Rangy">
+                <script type="descriptor" src="Rangy/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/rangy/1.3.0/rangy-core.min.js");
+                </script>
+            </wpm-package>   
+            <wpm-package id="RangyClassApplier">
+                <script type="descriptor" src="RangyClassApplier/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/rangy/1.3.0/rangy-classapplier.min.js");
+                </script>
+            </wpm-package>   
+            <wpm-package id="Aja">
+                <script type="descriptor" src="Aja/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/aja/0.4.1/aja.min.js");
+                </script>
+            </wpm-package>   
+            <wpm-package id="Awesomplete">
+                <script type="descriptor" src="Awesomplete/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.2/awesomplete.min.js");
+                </script>
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.2/awesomplete.min.css" rel="stylesheet" type="text/css"/>
+            </wpm-package>   
+            <wpm-package id="Showdown">
+                <script type="descriptor" src="Showdown/descriptor.json"></script>
+                <script type="disabled">
+                    window.ShowdownLibraryPath = "https://libraries.projects.cavi.au.dk/javascript/showdown";
+                    {
+                        requirejs.config({
+                            paths: {
+                                showdown: ShowdownLibraryPath
+                            }
+                        });                        
+                    }
+                </script>
+            </wpm-package>   
+            <wpm-package id="latex_js">
+                <script type="descriptor" src="latexjs/descriptor.json"></script>
+                <script type="disabled">
+                    window.LatexJSLibraryPath = "https://cdn.jsdelivr.net/npm/latex.js@0.12.1/dist/";
+                </script>
+            </wpm-package>   
+            <wpm-package id="Quadtree">
+                <script type="descriptor" src="Quadtree/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/Quadtree/quadtree.min.js");
+                </script>
+            </wpm-package>   
+            <wpm-package id="CanvasToBlob">
+                <script type="descriptor" src="CanvasToBlob/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/javascript-canvas-to-blob/3.14.0/js/canvas-to-blob.min.js");
+                </script>
+            </wpm-package>   
+            <wpm-package id="Slider">
+                <script type="descriptor" src="Slider/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/Slider/1.0/Slider.min.js");
+                </script>
+            </wpm-package>   
+            <wpm-package id="SVGCanvas">
+                <script type="descriptor" src="SVGCanvas/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/SVGCanvas/1.0/SVGCanvas.min.js");
+                </script>
+            </wpm-package>   
+            <wpm-package id="kd-tree">
+                <script type="descriptor" src="kd-tree/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/kd-tree/kdTree-min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="d3">
+                <script type="descriptor" src="d3/descriptor.json"></script>
+                <script type="disabled">
+                    window.d3jsLibraryPath = "https://d3js.org/d3.v6.min";
+                    {
+                        requirejs.config({
+                            paths: {
+                                "d3@6": d3jsLibraryPath
+                            }
+                        });                        
+                    }                    
+                    //await wpm.requireExternal("https://d3js.org/d3.v6.min.js");
+                </script>
+            </wpm-package>            
+            <wpm-package id="diffHTML">
+                <script type="descriptor" src="diffHTML/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://unpkg.com/diffhtml@1.0.0-beta.27/dist/diffhtml.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="diffDOM">
+                <script type="descriptor" src="diffDOM/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/diffDOM/diffDOM.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="Uploader">
+                <script type="descriptor" src="Uploader/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/exif-js@2.3.0/exif.min.js");
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/Uploader/1.0/Uploader.min.js");
+                </script>
+            </wpm-package>   
+            <wpm-package id="Observer">
+                <script type="descriptor" src="Observer/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/Observer/1.0/Observer.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="FastDOM">
+                <script type="descriptor" src="fastdom/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/fastdom/1.0.10/fastdom.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="pep">
+                <script type="descriptor" src="pep/descriptor.json"></script>
+                <script type="disabled">
+                    wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/pep/pep.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="BezierCurves">
+                <script type="descriptor" src="BezierCurves/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/BezierCurves/bezier.js");
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/BezierCurves/fit-curve.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="PixiCanvas">
+                <script type="descriptor" src="PixiCanvas/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/PixiCanvas/1.0/PixiCanvas.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="Moment">
+                <script type="descriptor" src="Moment/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/Moment/moment.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="date-fns">
+                <script type="descriptor" src="date-fns/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/date-fns/date_fns.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="anchorme">
+                <script type="descriptor" src="Anchorme/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/anchorme/anchorme.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="nouislider">
+                <script type="descriptor" src="nouislider/descriptor.json"></script>
+                <link href="https://libraries.projects.cavi.au.dk/javascript/nouislider/nouislider.min.css" rel="stylesheet" type="text/css"/>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/nouislider/nouislider.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="Levenshtein">
+                <script type="descriptor" src="Levenshtein/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/Levenshtein/1.1.6/levenshtein.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="metamax">
+                <script type="descriptor" src="metamax/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://stream.cavi.au.dk/cache/js/MetaMaxCache.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="pyodide">
+                <script type="descriptor" src="pyodide/descriptor.json"></script>
+                <script type="disabled">
+                    window.PyodideLibraryPath = "https://libraries.projects.cavi.au.dk/javascript/pyodide/";
+                    window.languagePluginUrl = PyodideLibraryPath;
+                </script>
+            </wpm-package>
+            <wpm-package id="typescript">
+                <script type="descriptor" src="typescript/descriptor.json"></script>
+                <script type="disabled">
+                    window.TypescriptLibraryPath = "https://libraries.projects.cavi.au.dk/javascript/typescript";
+                    {
+                        requirejs.config({
+                            paths: {
+                                typescript: TypescriptLibraryPath
+                            }
+                        });                        
+                    }
+                </script>
+            </wpm-package>
+            <wpm-package id="paho-mqtt">
+                <script type="descriptor" src="paho-mqtt/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.min.js");
+                </script>
+            </wpm-package>            
+            <wpm-package id="requirejs">
+                <script type="descriptor" src="requirejs/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/require/require.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="monaco_editor">
+                <script type="descriptor" src="monaco_editor/descriptor.json"></script>
+                <script type="disabled">
+                    window.MonacoLibraryPath = "https://libraries.projects.cavi.au.dk/javascript/monaco/0.23/vs";
+                    
+                    {
+                        //Configure monaco in require loader
+                        requirejs.config({
+                            paths: {
+                                vs: MonacoLibraryPath
+                            }
+                        });
+
+                        window.MonacoEnvironment = {
+                            getWorkerUrl: function(workerId, label) {
+                              return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
+                                self.MonacoEnvironment = {
+                                  baseUrl: 'https://libraries.projects.cavi.au.dk/javascript/monaco/0.23/'
+                                };
+                                importScripts('https://libraries.projects.cavi.au.dk/javascript/monaco/0.23/vs/base/worker/workerMain.js');`
+                              )}`;
+                            }
+                          };
+                    }
+                </script>
+            </wpm-package>
+            <wpm-package id="codemirror_editor">
+                <script type="descriptor" src="codemirror_editor/descriptor.json"></script>
+                <script type="disabled">
+                    window.CodemirrorLibraryPath = "https://libraries.projects.cavi.au.dk/javascript/codemirror";
+                    
+                    {
+                        requirejs.config({
+                            packages: [{
+                                name: "cm",
+                                location: CodemirrorLibraryPath,
+                                main: "lib/codemirror"
+                            }]
+                        });
+                    }
+                </script>
+            </wpm-package>
+            <wpm-package id="ace_editor">
+                <script type="descriptor" src="ace_editor/descriptor.json"></script>
+                <script type="disabled">
+                    window.AceLibraryPath = "https://libraries.projects.cavi.au.dk/javascript/ace";
+                    {
+                        requirejs.config({
+                            paths: {
+                                ace: AceLibraryPath
+                            }
+                        });                        
+                    }
+                </script>
+            </wpm-package>
+            <wpm-package id="sass_js">
+                <script type="descriptor" src="sass.js/descriptor.json"></script>
+                <script type="disabled">
+                    window.SassJsLibraryPath = "https://libraries.projects.cavi.au.dk/javascript/sass.js/0.11.1";
+                    {
+                        requirejs.config({
+                            paths: {
+                                sass: SassJsLibraryPath
+                            }
+                        });                        
+                    }
+                    
+                    window.fetchSassWorkerBlob = async ()=> {
+                        let response = await fetch("https://libraries.projects.cavi.au.dk/javascript/sass.js/0.11.1/sass.worker.min.js");
+                        let worker = await response.text();
+                        let blob = new Blob([worker], {type: 'application/javascript'});
+                        
+                        return blob;
+                    }
+                </script>
+            </wpm-package>
+            <wpm-package id="opal">
+                <script type="descriptor" src="opal/descriptor.json"></script>
+                <script type="disabled">
+                    window.OpalLibraryPath = "//cdn.opalrb.com/opal/1.0.0/";
+                    window.OpalInitialized = false;
+                    requirejs.config({
+                        paths: {
+                            opal: OpalLibraryPath
+                        }
+                    });
+                </script>
+            </wpm-package>
+            <wpm-package id="dialog-polyfill">
+                <script type="descriptor" src="dialog-polyfill/descriptor.json"></script>
+                <link href="https://cdn.jsdelivr.net/npm/dialog-polyfill@0.5.6/dist/dialog-polyfill.css" rel="stylesheet" type="text/css"/>
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/dialog-polyfill@0.5.6/dist/dialog-polyfill.min.js");
+                </script>
+            </wpm-package>
+            
+            <wpm-package id="fastdiff">
+                <script type="descriptor" src="fastdiff/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/fastdiff/2019/fastdiff.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="pixijs">
+                <script type="descriptor" src="Pixijs/descriptor.json"></script>
+                <script type="disabled">
+                    //Load pixi into global space?
+                    let pixiJsUrl = "https://libraries.projects.cavi.au.dk/javascript/PixiCanvas/pixi.min.js";
+                    wpm.requireExternal("https://cdn.jsdelivr.net/npm/pixi.js-legacy@6.0.2/dist/browser/pixi-legacy.min.js");
+                </script>
+            </wpm-package>
+            
+            <wpm-package id="material-design-components">
+                <script type="descriptor" src="material-design/components-descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://unpkg.com/material-components-web@7.0.0/dist/material-components-web.min.js");
+                </script>
+                <link href="https://unpkg.com/material-components-web@7.0.0/dist/material-components-web.min.css" rel="stylesheet" type="text/css"/>
+            </wpm-package>
+            <wpm-package id="material-design-icons">
+                <script type="descriptor" src="material-design/icons-descriptor.json"></script>
+                <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet" type="text/css"/>
+            </wpm-package>
+
+            <wpm-package id="golden-layout">
+                <script type="descriptor" src="golden-layout/descriptor.json"></script>
+                <script type="disabled">
+
+                    window.GoldenLayoutPath = "https://libraries.projects.cavi.au.dk/javascript/golden-layout";
+
+                    let goldenLayoutLoadPromise = null;
+
+                    window.loadGoldenLayout = async (bodyElement) => {
+                        if(goldenLayoutLoadPromise != null) {
+                            console.trace();
+                            await goldenLayoutLoadPromise;
+                            return;
+                        }
+
+                        goldenLayoutLoadPromise = new Promise(async (resolve)=>{
+
+                            console.log("Loading GoldenLayout with body replacement:", bodyElement);
+
+                            //Find top component after html
+                            let topLevelParent = bodyElement;
+                            while(topLevelParent.parentNode != null && !topLevelParent.parentNode.matches("html")) {
+                                topLevelParent = topLevelParent.parentNode;
+                            }
+
+                            await wpm.requireExternal("https://code.jquery.com/jquery-3.4.1.slim.min.js");
+
+                            let origJQueryOffset = jQuery.fn.offset;
+
+                            jQuery.fn.offset = function() {
+                                let el = this[0];
+                                var rect = el.getBoundingClientRect();
+
+                                let bounds = topLevelParent.getBoundingClientRect();
+
+                                return {
+                                  top: rect.top - bounds.y  + topLevelParent.scrollTop,
+                                  left: rect.left - bounds.x + topLevelParent.scrollLeft
+                                };
+                            };
+
+                            let origJqueryCss = jQuery.fn.css;
+
+                            jQuery.fn.css = function(...args) {
+                                if(this.is("body") || this.is("html")) {
+                                    console.log("Skipping css on html and body");
+                                    return;
+                                }
+
+                                return origJqueryCss.bind(this)(...args);
+                            };
+
+                            //Setup override event listener
+                            var origAddEventListener = EventTarget.prototype.addEventListener;
+                            EventTarget.prototype.addEventListener = function(type, fn, capture) {
+                                if(type === "mousedown" && this.matches != null && (this.matches(".lm_tab") || this.matches(".lm_splitter"))) {
+                                    origAddEventListener.bind(this)(type, (evt)=>{
+                                        let bounds = topLevelParent.getBoundingClientRect();
+
+                                        let evtOverrides = new Map();
+
+                                        evtOverrides.set("pageX", evt.pageX - bounds.x);
+                                        evtOverrides.set("pageY", evt.pageY - bounds.y);
+
+                                        let evtProxy = new Proxy(evt, {
+                                            get: (obj, prop)=>{
+                                                if(evtOverrides.has(prop)) {
+                                                    let override = evtOverrides.get(prop);
+                                                    return typeof override === "function" ? override.bind(obj) : override;
+                                                } else {
+                                                    return typeof obj[prop] === "function" ? obj[prop].bind(obj) : obj[prop];
+                                                }
+                                            }
+                                        });
+
+                                        fn(evtProxy);
+
+                                    }, capture);
+                                } else {
+                                    origAddEventListener.bind(this)(type, fn, capture);
+                                }
+                            }
+
+                            await wpm.requireExternal(GoldenLayoutPath+"/goldenlayout-base.css");
+                            await wpm.requireExternal(GoldenLayoutPath+"/goldenlayout-light-theme.css");
+
+                            let documentOverrides = new Map();
+
+                            documentOverrides.set("body", bodyElement);
+
+                            documentOverrides.set("addEventListener", (eventName, callback, options)=>{
+                                if(options != null) {
+                                    console.log("OPTIONS!!!", options);
+                                }
+
+                                cQuery(document).on(eventName, (evt)=>{
+                                    let bounds = topLevelParent.getBoundingClientRect();
+
+                                    let evtOverrides = new Map();
+
+                                    evtOverrides.set("pageX", evt.pageX - bounds.x);
+                                    evtOverrides.set("pageY", evt.pageY - bounds.y);
+
+                                    let evtProxy = new Proxy(evt, {
+                                        get: (obj, prop)=>{
+                                            if(evtOverrides.has(prop)) {
+                                                let override = evtOverrides.get(prop);
+                                                return typeof override === "function" ? override.bind(obj) : override;
+                                            } else {
+                                                return typeof obj[prop] === "function" ? obj[prop].bind(obj) : obj[prop];
+                                            }
+                                        }
+                                    });
+
+                                    callback(evtProxy);
+                                }, options);
+                            });
+
+                            documentOverrides.set("removeEventListener", (eventName, callback, options)=>{
+                                cQuery(document).off(eventName);
+                            });
+
+                            documentOverrides.set("querySelector", (selector)=>{
+                                console.log("querySelector", selector);
+                                return document.querySelector(selector);
+                            });
+
+                            documentOverrides.set("querySelectorAll", (selector)=>{
+                                console.log("querySelectorAll", selector);
+                                return document.querySelectorAll(selector);
+                            });
+
+                            let documentProxy = new Proxy(document, {
+                                get: (obj, prop)=>{
+                                    if(documentOverrides.has(prop)) {
+                                        let override = documentOverrides.get(prop);
+                                        return typeof override === "function" ? override.bind(obj) : override;
+                                    } else {
+                                        return typeof obj[prop] === "function" ? obj[prop].bind(obj) : obj[prop];
+                                    }
+                                }
+                            });
+
+                            async function internalLoad(document) {
+
+                                let response = await fetch(GoldenLayoutPath+"/goldenlayout.min.js", {credentials: 'same-origin'});
+                                let scriptContent = await response.text();
+
+                                let origDefine = window.define;
+                                if (window.define != null) {
+                                    window.define = null;
+                                }
+
+                                eval(scriptContent);
+
+                                //Restore previous define, if this script did not set define
+                                if (window.define === null && origDefine != null) {
+                                    window.define = origDefine;
+                                }
+                            }
+
+                            await internalLoad(documentProxy);
+
+                            resolve();
+                        });
+
+                        await goldenLayoutLoadPromise;
+                    };
+                </script>
+            </wpm-package>
+            <wpm-package id="golden-layout_material-design-theme">
+                <script type="descriptor" src="golden-layout_material-design-theme/descriptor.json"></script>
+                <link href="golden-layout_material-design-theme/scss/gl-mdc-binding.scss" rel="stylesheet" type="text/css"/>
+            </wpm-package>
+            <wpm-package id="ohm-js">
+                <script type="descriptor" src="ohm-js/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("//unpkg.com/ohm-js@15.4.1/dist/ohm.min.js");
+                </script>
+            </wpm-package>     
+            <wpm-package id="qrcodejs">
+                <script type="descriptor" src="qrcodejs/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/qrcodejs/qrcode.min.js");
+                </script>
+            </wpm-package>                   
+            <wpm-package id="html2canvas">
+                <script type="descriptor" src="html2canvas/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/html2canvas/html2canvas.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="p5js">
+                <script type="descriptor" src="p5js/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="doppio">
+                <script type="descriptor" src="doppio/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/doppio/doppio.js");
+                </script>
+            </wpm-package>          
+            <wpm-package id="browserfs">
+                <script type="descriptor" src="browserfs/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/browserfs/browserfs.min.js");
+                </script>
+            </wpm-package>   
+            <wpm-package id="brython">
+                <script type="descriptor" src="brython/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal(["https://libraries.projects.cavi.au.dk/javascript/brython/brython.js"]);
+                    await wpm.requireExternal(["https://libraries.projects.cavi.au.dk/javascript/brython/brython_stdlib.js"]);
+                </script>
+            </wpm-package>                           
+            <wpm-package id="setImmediate">
+                <script type="descriptor" src="setImmediate/descriptor.json"></script>
+                <script type="disabled">
+                    if (typeof setImmediate === "undefined"){
+                        await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/setimmediate/setImmediate.js");
+                    }
+                </script>
+            </wpm-package>               
+            <wpm-package id="fengari">
+                <script type="descriptor" src="fengari/descriptor.json"></script>
+                <script type="disabled">
+                    {
+                        requirejs.config({
+                            paths: {
+                                fengari: "https://libraries.projects.cavi.au.dk/javascript/fengari/"
+                            }
+                        });
+                    }
+                </script>
+            </wpm-package>
+            <wpm-package id="esprima">
+                <script type="descriptor" src="p5js/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("//unpkg.com/esprima@~4.0/dist/esprima.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="fontawesome">
+                <script type="descriptor" src="fontawesome/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("//kit.fontawesome.com/ce5d6e118c.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="LiveElement">
+                <script type="descriptor" src="LiveElement/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/LiveElement/1.0/LiveElement.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="BlocklyCore">
+                <script type="descriptor" src="blockly/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/blockly@4.20201217.0/blockly_compressed.js");
+                    //await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/blockly_test/blockly_uncompressed.js");
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/blockly@4.20201217.0/javascript_compressed.js");
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/blockly@4.20201217.0/msg/en.js");
+
+                    //Fix Blockly.SNAP_RADIUS being used for BUMPING as well
+                    Blockly.BUMP_RADIUS = 0;
+                    Blockly.BlockSvg.prototype.bumpNeighbours = function() {
+                      if (!this.workspace) {
+                        return;  // Deleted block.
+                      }
+                      if (this.workspace.isDragging()) {
+                        return;  // Don't bump blocks during a drag.
+                      }
+                      var rootBlock = this.getRootBlock();
+                      if (rootBlock.isInFlyout) {
+                        return;  // Don't move blocks around in a flyout.
+                      }
+                      // Loop through every connection on this block.
+                      var myConnections = this.getConnections_(false);
+                      for (var i = 0, connection; (connection = myConnections[i]); i++) {
+
+                        // Spider down from this block bumping all sub-blocks.
+                        if (connection.isConnected() && connection.isSuperior()) {
+                          connection.targetBlock().bumpNeighbours();
+                        }
+
+                        var neighbours = connection.neighbours(Blockly.BUMP_RADIUS);
+                        for (var j = 0, otherConnection; (otherConnection = neighbours[j]); j++) {
+
+                          // If both connections are connected, that's probably fine.  But if
+                          // either one of them is unconnected, then there could be confusion.
+                          if (!connection.isConnected() || !otherConnection.isConnected()) {
+                            // Only bump blocks if they are from different tree structures.
+                            if (otherConnection.getSourceBlock().getRootBlock() != rootBlock) {
+
+                              // Always bump the inferior block.
+                              if (connection.isSuperior()) {
+                                otherConnection.bumpAwayFrom(connection);
+                              } else {
+                                connection.bumpAwayFrom(otherConnection);
+                              }
+                            }
+                          }
+                        }
+                      }
+                    };
+                </script>
+            </wpm-package>
+            <wpm-package id="rxjs">
+                <script type="descriptor" src="rxjs/descriptor.json"></script>
+                <script type="disabled">
+                    //Get RXJS library used for Subject and Observable and more...
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.1.0/rxjs.umd.js");
+                </script>
+            </wpm-package>
+
+            <wpm-package id="aaditmshah-lexer">
+                <script type="descriptor" src="aaditmshah-lexer/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/gh/aaditmshah/lexer@1.7.8/lexer.min.js");
+                </script>
+            </wpm-package>
+
+            <wpm-package id="acorn">
+                <script type="descriptor" src="acorn/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/acorn/8.0.4/acorn.min.js");
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/acorn-walk/8.0.1/walk.min.js");
+                </script>
+            </wpm-package>
+
+            <wpm-package id="astring">
+                <script type="descriptor" src="astring/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/astring@1.6.0/dist/astring.min.js");
+                </script>
+            </wpm-package>
+
+            <wpm-package id="meriyah">
+                <script type="descriptor" src="meriyah/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/meriyah@3.1.6/dist/meriyah.iife.min.js");
+                </script>
+            </wpm-package>
+
+            <wpm-package id="jsbeautify">
+                <script type="descriptor" src="jsbeautify/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.13.4/beautify.min.js");
+                </script>
+            </wpm-package>
+
+            <wpm-package id="alertifyjs">
+                <script type="descriptor" src="alertifyjs/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js");
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css");
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css");
+                </script>
+            </wpm-package>
+
+            <wpm-package id="izitoast">
+                <script type="descriptor" src="iziToast/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js");
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css");
+                </script>
+            </wpm-package>
+
+            <wpm-package id="threejs">
+                <script type="descriptor" src="threejs/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/three.js/r125/three.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="mathjs">
+                <script type="descriptor" src="mathjs/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://unpkg.com/mathjs@9.4.3/lib/browser/math.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="potpack">
+                <script type="descriptor" src="potpack/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/potpack@1.0.1/index.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="js-yaml">
+                <script type="descriptor" src="js-yaml/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js");
+                </script>
+            </wpm-package>       
+            <wpm-package id="UUIDGenerator">
+                <script type="descriptor" src="UUIDGenerator/descriptor.json"></script>
+                <script src="UUIDGenerator/generator.js" type="disabled"></script>
+            </wpm-package>            
+        </div>
+    </body>
+</html> 

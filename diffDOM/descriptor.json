@@ -1,0 +1,8 @@
+{
+    "description": "A JavaScript diffing algorithm for DOM elements",
+    "dependencies": [],
+    "assets": [],
+    "version": "4.1.6",
+    "license": "LGPL 3.0",
+    "documentationLink": "https://github.com/fiduswriter/diffDOM"
+}

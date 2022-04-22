@@ -1,0 +1,11 @@
+{
+    "description": "Python in the browser",
+    "dependencies": [],
+    "assets": [],
+    "version": "3.8.0",
+    "changelog": {
+        "3.8.0": "First WPM version"
+    },
+    "documentationLink": "https://github.com/brython-dev/brython",
+    "license": "BSD-3-Clause"
+}

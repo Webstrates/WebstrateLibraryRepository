@@ -1,0 +1,10 @@
+{
+    "description": "Library to help with range selection and manipulation",
+    "dependencies": [
+        "#requirejs"
+    ],
+    "assets": [],
+    "version": "1.3.0",
+    "license": "MIT",
+    "documentationLink": "https://github.com/timdown/rangy/wiki"
+}

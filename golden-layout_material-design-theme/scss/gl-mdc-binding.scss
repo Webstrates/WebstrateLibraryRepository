@@ -1,0 +1,25 @@
+.lm_goldenlayout .lm_content {
+    background: var(--mdc-theme-background);
+}
+.lm_goldenlayout .lm_header .lm_tab {
+    background: var(--mdc-theme-surface);
+    border: 0;
+    user-select: none;
+    
+    &.lm_active {
+        border-bottom: 2px solid var(--mdc-theme-primary);
+        box-shadow: none;
+        padding-bottom: 4px;    
+        
+        &:before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: var(--mdc-theme-primary);
+            opacity: 0.04;
+            content: "";
+            width: 100%;
+            height: 100%;            
+        }
+    }
+}

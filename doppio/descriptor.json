@@ -1,0 +1,8 @@
+{
+    "description": "Doppio JavaVM",
+    "dependencies": ["#setImmediate", "#browserfs"],
+    "assets": [],
+    "version": "0.5",
+    "license": "MIT",
+    "documentationLink": "https://plasma-umass.org/doppio-demo/"
+}

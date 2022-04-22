@@ -1,0 +1,13 @@
+{
+    "description": "A slider widget",
+    "dependencies": [
+        "#cQuery",
+        "#CaviTouch"
+    ],
+    "assets": [],
+    "version": "1.0",
+    "changelog": {
+        "1.0": "Initial version"
+    },
+    "documentationLink": ""
+}

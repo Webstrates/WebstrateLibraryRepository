@@ -1,0 +1,8 @@
+{
+    "description": "Parse, validate, manipulate, and display dates and times in JavaScript.",
+    "dependencies": [],
+    "assets": [],
+    "version": "2.23.0",
+    "license": "MIT",
+    "documentationLink": "https://momentjs.com/docs/"
+}

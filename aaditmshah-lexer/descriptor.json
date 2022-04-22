@@ -1,0 +1,8 @@
+{
+    "description": "An elegant armor-plated JavaScript lexer modelled after flex. Easily extensible to tailor to your need for perfection.",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.7.8",
+    "license": "MIT",
+    "documentationLink": "https://github.com/aaditmshah/lexer"
+}

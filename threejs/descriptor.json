@@ -1,0 +1,8 @@
+{
+    "description": "JavaScript 3D library",
+    "dependencies": [],
+    "assets": [],
+    "version": "r125",
+    "license": "MIT",
+    "documentationLink": "https://threejs.org/"
+}

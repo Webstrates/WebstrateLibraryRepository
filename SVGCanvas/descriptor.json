@@ -1,0 +1,14 @@
+{
+    "description": "SVG canvas for drawing",
+    "dependencies": [
+        "#cQuery",
+        "#CaviTouch",
+        "#kd-tree"
+    ],
+    "assets": [],
+    "version": "1.0",
+    "changelog": {
+        "1.0": "Initial version"
+    },
+    "documentationLink": ""
+}

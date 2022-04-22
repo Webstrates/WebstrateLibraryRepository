@@ -1,0 +1,8 @@
+{
+    "description": "Polyfill for dialogs",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.0",
+    "license": "BSD",
+    "documentationLink": "https://github.com/GoogleChrome/dialog-polyfill"
+}

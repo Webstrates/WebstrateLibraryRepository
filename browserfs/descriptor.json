@@ -1,0 +1,8 @@
+{
+    "description": "BrowserFS - A filesystem in the browser",
+    "dependencies": [],
+    "assets": [],
+    "version": "?",
+    "license": "MIT + ?",
+    "documentationLink": "https://github.com/jvilk/BrowserFS"
+}

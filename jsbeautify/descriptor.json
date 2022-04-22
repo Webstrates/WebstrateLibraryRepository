@@ -1,0 +1,8 @@
+{
+    "description": "This little beautifier will reformat and re-indent bookmarklets, ugly JavaScript, unpack scripts packed by Dean Edward’s popular packer, as well as partly deobfuscate scripts processed by the npm package javascript-obfuscator.",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.13.4",
+    "license": "MIT",
+    "documentationLink": "https://github.com/beautify-web/js-beautify"
+}

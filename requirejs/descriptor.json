@@ -1,0 +1,8 @@
+{
+    "description": "Require.js",
+    "dependencies": [],
+    "assets": [],
+    "version": "2.3.6",
+    "license": "MIT",
+    "documentationLink": "https://requirejs.org/docs/api.html"
+}

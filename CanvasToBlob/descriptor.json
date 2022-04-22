@@ -1,0 +1,8 @@
+{
+    "description": "Library to convert canvas elements into Blob objects.",
+    "dependencies": [],
+    "assets": [],
+    "version": "3.14.0",
+    "license": "MIT",
+    "documentationLink": "https://github.com/blueimp/JavaScript-Canvas-to-Blob"
+}

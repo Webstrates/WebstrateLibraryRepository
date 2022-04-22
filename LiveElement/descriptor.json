@@ -1,0 +1,13 @@
+{
+    "description": "A small javascript library to work with 'Live' elements, as they enter the dom",
+    "dependencies": [
+        "rxjs"
+    ],
+    "assets": [],
+    "version": "0.1",
+    "changelog": {
+        "0.1": "Initial version"
+    },
+    "license": "Apache 2.0",
+    "documentationLink": ""
+}

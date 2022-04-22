@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html data-protected="all">
+    <head>
+        <title>Webstrate Library Repository</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div class="packages">
+            <wpm-package id="cQuery">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "cQuery - Lightweight jQuery alternative",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.0",
+    "changelog": {
+        "1.0": "Initial version"
+    },
+    "documentationLink": "",
+    "license": "Apache 2.0"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/cQuery/1.0/caviQuery.min.js");
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/cQuery/1.0/caviQueryPlugins.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="CaviDraggableHTML5">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "CaviDraggableHTML5 makes HTML5 dnd api easy to use",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.0",
+    "changelog": {
+    },
+    "license": "Apache 2.0",
+    "documentationLink": ""
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/CaviDraggableHTML5/1.0/draggable.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="CaviTouch">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "CaviTouch is a library to seemlesly handle touch, mouse, pointers and gestures",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.4",
+    "changelog": {
+        "1.0": "Initial version",
+        "1.1": "Added upgrade workaround",
+        "1.2": "Fixed bug during upgrade",
+        "1.3": "Fixed another bug during upgrade",
+        "1.4": "Moved to CDN and minified"
+    },
+    "documentationLink": "",
+    "license": "Apache 2.0"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/CaviTouch/1.4/CaviTouch.min.js");
+                </script>
+            </wpm-package>   
+            <wpm-package id="Rangy">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Library to help with range selection and manipulation",
+    "dependencies": [
+        "#requirejs"
+    ],
+    "assets": [],
+    "version": "1.3.0",
+    "license": "MIT",
+    "documentationLink": "https://github.com/timdown/rangy/wiki"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/rangy/1.3.0/rangy-core.min.js");
+                </script>
+            </wpm-package>   
+            <wpm-package id="RangyClassApplier">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Can toggle classes on rangy selections",
+    "dependencies": ["#Rangy"],
+    "assets": [],
+    "version": "1.3.0",
+    "license": "MIT",
+    "documentationLink": "https://github.com/timdown/rangy/wiki/Class-Applier-Module"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/rangy/1.3.0/rangy-classapplier.min.js");
+                </script>
+            </wpm-package>   
+            <wpm-package id="Aja">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Ajax without XML, Asynchronous JavaScript And JSON(P)",
+    "dependencies": [],
+    "assets": [],
+    "license": "MIT",    
+    "version": "0.4.1",
+    "documentationLink": "http://krampstudio.com/aja.js/#samples"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/aja/0.4.1/aja.min.js");
+                </script>
+            </wpm-package>   
+            <wpm-package id="Awesomplete">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Ultra lightweight, customizable, simple autocomplete widget",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.1.4",
+    "license": "MIT",        
+    "documentationLink": "https://leaverou.github.io/awesomplete/#basic-usage"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.2/awesomplete.min.js");
+                </script>
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.2/awesomplete.min.css" rel="stylesheet" type="text/css"/>
+            </wpm-package>   
+            <wpm-package id="Showdown">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "A Markdown to HTML converter written in Javascript",
+    "dependencies": [
+        "#requirejs"
+    ],
+    "assets": [],
+    "version": "1.9.0",
+    "license": "MIT",
+    "documentationLink": "http://showdownjs.com/#!/documentation"
+}
+
+</script>
+
+                <script type="disabled">
+                    window.ShowdownLibraryPath = "https://libraries.projects.cavi.au.dk/javascript/showdown";
+                    {
+                        requirejs.config({
+                            paths: {
+                                showdown: ShowdownLibraryPath
+                            }
+                        });                        
+                    }
+                </script>
+            </wpm-package>   
+            <wpm-package id="latex_js">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Latex.js, Latex to html generator",
+    "dependencies": [
+        "#requirejs"
+    ],
+    "assets": [],
+    "version": "0.12.1",
+    "license": "MIT",
+    "documentationLink": "https://latex.js.org"
+}
+
+</script>
+
+                <script type="disabled">
+                    window.LatexJSLibraryPath = "https://cdn.jsdelivr.net/npm/latex.js@0.12.1/dist/";
+                </script>
+            </wpm-package>   
+            <wpm-package id="Quadtree">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "JavaScript Quadtree implementation",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.2",
+    "license": "MIT",
+    "documentationLink": "https://github.com/timohausmann/quadtree-js"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/Quadtree/quadtree.min.js");
+                </script>
+            </wpm-package>   
+            <wpm-package id="CanvasToBlob">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Library to convert canvas elements into Blob objects.",
+    "dependencies": [],
+    "assets": [],
+    "version": "3.14.0",
+    "license": "MIT",
+    "documentationLink": "https://github.com/blueimp/JavaScript-Canvas-to-Blob"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/javascript-canvas-to-blob/3.14.0/js/canvas-to-blob.min.js");
+                </script>
+            </wpm-package>   
+            <wpm-package id="Slider">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "A slider widget",
+    "dependencies": [
+        "#cQuery",
+        "#CaviTouch"
+    ],
+    "assets": [],
+    "version": "1.0",
+    "changelog": {
+        "1.0": "Initial version"
+    },
+    "documentationLink": ""
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/Slider/1.0/Slider.min.js");
+                </script>
+            </wpm-package>   
+            <wpm-package id="SVGCanvas">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "SVG canvas for drawing",
+    "dependencies": [
+        "#cQuery",
+        "#CaviTouch",
+        "#kd-tree"
+    ],
+    "assets": [],
+    "version": "1.0",
+    "changelog": {
+        "1.0": "Initial version"
+    },
+    "documentationLink": ""
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/SVGCanvas/1.0/SVGCanvas.min.js");
+                </script>
+            </wpm-package>   
+            <wpm-package id="kd-tree">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "JavaScript kd-tree implementation",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.01",
+    "license": "MIT",
+    "documentationLink": "https://github.com/ubilabs/kd-tree-javascript"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/kd-tree/kdTree-min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="d3">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Data-Driven Documents (d3.js) graph engine",
+    "dependencies": [],
+    "assets": [],
+    "license": "BSD-2-Clause (ISC)",
+    "version": "6",
+    "documentationLink": "https://github.com/d3/d3"
+}
+
+</script>
+
+                <script type="disabled">
+                    window.d3jsLibraryPath = "https://d3js.org/d3.v6.min";
+                    {
+                        requirejs.config({
+                            paths: {
+                                "d3@6": d3jsLibraryPath
+                            }
+                        });                        
+                    }                    
+                    //await wpm.requireExternal("https://d3js.org/d3.v6.min.js");
+                </script>
+            </wpm-package>            
+            <wpm-package id="diffHTML">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "A JavaScript diffing algorithm for DOM elements",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.0.0-beta.27",
+    "license": "MIT",
+    "documentationLink": "https://github.com/tbranyen/diffhtml/"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://unpkg.com/diffhtml@1.0.0-beta.27/dist/diffhtml.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="diffDOM">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "A JavaScript diffing algorithm for DOM elements",
+    "dependencies": [],
+    "assets": [],
+    "version": "4.1.6",
+    "license": "LGPL 3.0",
+    "documentationLink": "https://github.com/fiduswriter/diffDOM"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/diffDOM/diffDOM.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="Uploader">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "An upload helper",
+    "dependencies": [
+        "#cQuery"
+    ],
+    "assets": [],
+    "version": "1.0",
+    "changelog": {
+        "1.0": "Initial version"
+    },
+    "license": "Apache 2.0",
+    "documentationLink": ""
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/exif-js@2.3.0/exif.min.js");
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/Uploader/1.0/Uploader.min.js");
+                </script>
+            </wpm-package>   
+            <wpm-package id="Observer">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Webstrate iframe observer, can wait for transclude, and changes to have propagated to server",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.0",
+    "license": "Apache 2.0",
+    "documentationLink": ""
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/Observer/1.0/Observer.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="FastDOM">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "FastDOM, make sure measure and mutate dom operations are made correctly",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.0",
+    "changelog": {
+        "1.0": "Initial version"
+    },
+    "license": "MIT",
+    "documentationLink": "https://github.com/wilsonpage/fastdom"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/fastdom/1.0.10/fastdom.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="pep">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Pointer Events Polyfill",
+    "dependencies": [],
+    "assets": [],
+    "version": "0.4.3",
+    "license": "MIT",
+    "documentationLink": "https://github.com/jquery/PEP"
+}
+
+</script>
+
+                <script type="disabled">
+                    wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/pep/pep.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="BezierCurves">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Utilities for working with Bezier curves",
+    "dependencies": [
+    ],
+    "assets": [],
+    "version": "1.0",
+    "changelog": {
+        "1.0": "Initial version"
+    },
+    "license":"MIT",
+    "documentationLink": "https://github.com/Pomax/bezierjs & https://github.com/soswow/fit-curves"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/BezierCurves/bezier.js");
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/BezierCurves/fit-curve.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="PixiCanvas">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Drawing canvas, implemented using pixijs",
+    "dependencies": [
+        "#cQuery",
+        "#CaviTouch",
+        "#BezierCurves",
+        "#pixijs"
+    ],
+    "assets": [],
+    "version": "1.0",
+    "changelog": {
+        "1.0": "Initial version"
+    },
+    "documentationLink": ""
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/PixiCanvas/1.0/PixiCanvas.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="Moment">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Parse, validate, manipulate, and display dates and times in JavaScript.",
+    "dependencies": [],
+    "assets": [],
+    "version": "2.23.0",
+    "license": "MIT",
+    "documentationLink": "https://momentjs.com/docs/"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/Moment/moment.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="date-fns">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "date-fns",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.30.1",
+    "license": "MIT",
+    "documentationLink": "https://date-fns.org/docs/Getting-Started/"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/date-fns/date_fns.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="anchorme">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Anchorme",
+    "dependencies": [
+    ],
+    "assets": [],
+    "version": "1.1.2",
+    "license": "MIT",    
+    "changelog": {
+        "1.1.2": "Initial version"
+    },
+    "documentationLink": "http://alexcorvi.github.io/anchorme.js/"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/anchorme/anchorme.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="nouislider">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "noUISlider",
+    "dependencies": [],
+    "assets": [],
+    "version": "13.1.1",
+    "license": "MIT",
+    "documentationLink": "https://refreshless.com/nouislider/"
+}
+
+</script>
+
+                <link href="https://libraries.projects.cavi.au.dk/javascript/nouislider/nouislider.min.css" rel="stylesheet" type="text/css"/>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/nouislider/nouislider.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="Levenshtein">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "A very efficient JS implementation calculating the Levenshtein distance, i.e. the difference between two strings.",
+    "dependencies": [
+    ],
+    "assets": [],
+    "version": "0.1",
+    "changelog": {
+        "0.1": "Initial version"
+    },
+    "license":"MIT",
+    "documentationLink": "https://github.com/gustf/js-levenshtein"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/Levenshtein/1.1.6/levenshtein.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="metamax">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "MetaMax - Videostrate Caching Server",
+    "dependencies": [],
+    "assets": [],
+    "version": "0.1"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://stream.cavi.au.dk/cache/js/MetaMaxCache.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="pyodide">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Pyodide, The Python scientific stack, compiled to WebAssembly.",
+    "dependencies": [
+        "#requirejs"
+    ],
+    "assets": [],
+    "version": "?",
+    "license": "MPL-2.0",
+    "documentationLink": "https://pyodide.readthedocs.io/en/latest/"
+}
+
+</script>
+
+                <script type="disabled">
+                    window.PyodideLibraryPath = "https://libraries.projects.cavi.au.dk/javascript/pyodide/";
+                    window.languagePluginUrl = PyodideLibraryPath;
+                </script>
+            </wpm-package>
+            <wpm-package id="typescript">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Typescript compiler for js",
+    "dependencies": [
+        "#requirejs"
+    ],
+    "assets": [],
+    "version": "3.5.2",
+    "license": "Apache 2.0",
+    "documentationLink": "http://www.typescriptlang.org/docs/home.html"
+}
+
+</script>
+
+                <script type="disabled">
+                    window.TypescriptLibraryPath = "https://libraries.projects.cavi.au.dk/javascript/typescript";
+                    {
+                        requirejs.config({
+                            paths: {
+                                typescript: TypescriptLibraryPath
+                            }
+                        });                        
+                    }
+                </script>
+            </wpm-package>
+            <wpm-package id="paho-mqtt">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Eclipse Paho - MQTT over Websockets",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.1.0",
+    "license": "EPL-1.0",
+    "documentationLink": "https://www.eclipse.org/paho/index.php?page=clients/js/index.php"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.min.js");
+                </script>
+            </wpm-package>            
+            <wpm-package id="requirejs">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Require.js",
+    "dependencies": [],
+    "assets": [],
+    "version": "2.3.6",
+    "license": "MIT",
+    "documentationLink": "https://requirejs.org/docs/api.html"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/require/require.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="monaco_editor">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Monaco Editor",
+    "dependencies": [
+        "#requirejs"
+    ],
+    "assets": [],
+    "version": "0.20.0",
+    "license": "MIT",
+    "documentationLink": "https://microsoft.github.io/monaco-editor/api/index.html"
+}
+
+</script>
+
+                <script type="disabled">
+                    window.MonacoLibraryPath = "https://libraries.projects.cavi.au.dk/javascript/monaco/0.23/vs";
+                    
+                    {
+                        //Configure monaco in require loader
+                        requirejs.config({
+                            paths: {
+                                vs: MonacoLibraryPath
+                            }
+                        });
+
+                        window.MonacoEnvironment = {
+                            getWorkerUrl: function(workerId, label) {
+                              return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
+                                self.MonacoEnvironment = {
+                                  baseUrl: 'https://libraries.projects.cavi.au.dk/javascript/monaco/0.23/'
+                                };
+                                importScripts('https://libraries.projects.cavi.au.dk/javascript/monaco/0.23/vs/base/worker/workerMain.js');`
+                              )}`;
+                            }
+                          };
+                    }
+                </script>
+            </wpm-package>
+            <wpm-package id="codemirror_editor">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Codemirror Editor",
+    "dependencies": [
+        "#requirejs"
+    ],
+    "assets": [],
+    "version": "5.48.0",
+    "license": "MIT",
+    "documentationLink": "https://codemirror.net/doc/manual.html"
+}
+
+</script>
+
+                <script type="disabled">
+                    window.CodemirrorLibraryPath = "https://libraries.projects.cavi.au.dk/javascript/codemirror";
+                    
+                    {
+                        requirejs.config({
+                            packages: [{
+                                name: "cm",
+                                location: CodemirrorLibraryPath,
+                                main: "lib/codemirror"
+                            }]
+                        });
+                    }
+                </script>
+            </wpm-package>
+            <wpm-package id="ace_editor">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Ace Editor",
+    "dependencies": [
+        "#requirejs"
+    ],
+    "assets": [],
+    "version": "1.4.5",
+    "license": "BSD",
+    "documentationLink": "https://ace.c9.io"
+}
+
+</script>
+
+                <script type="disabled">
+                    window.AceLibraryPath = "https://libraries.projects.cavi.au.dk/javascript/ace";
+                    {
+                        requirejs.config({
+                            paths: {
+                                ace: AceLibraryPath
+                            }
+                        });                        
+                    }
+                </script>
+            </wpm-package>
+            <wpm-package id="sass_js">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "SCSS compiler for JS",
+    "dependencies": [
+        "#requirejs"
+    ],
+    "assets": [],
+    "version": "0.11.1",
+    "license": "MIT",
+    "documentationLink": "https://github.com/medialize/sass.js"
+}
+
+</script>
+
+                <script type="disabled">
+                    window.SassJsLibraryPath = "https://libraries.projects.cavi.au.dk/javascript/sass.js/0.11.1";
+                    {
+                        requirejs.config({
+                            paths: {
+                                sass: SassJsLibraryPath
+                            }
+                        });                        
+                    }
+                    
+                    window.fetchSassWorkerBlob = async ()=> {
+                        let response = await fetch("https://libraries.projects.cavi.au.dk/javascript/sass.js/0.11.1/sass.worker.min.js");
+                        let worker = await response.text();
+                        let blob = new Blob([worker], {type: 'application/javascript'});
+                        
+                        return blob;
+                    }
+                </script>
+            </wpm-package>
+            <wpm-package id="opal">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Opal, Ruby for javascript",
+    "dependencies": [
+        "#requirejs"
+    ],
+    "assets": [],
+    "version": "1.0.0",
+    "license": "MIT",
+    "documentationLink": "http://opalrb.com/docs/"
+}
+
+</script>
+
+                <script type="disabled">
+                    window.OpalLibraryPath = "//cdn.opalrb.com/opal/1.0.0/";
+                    window.OpalInitialized = false;
+                    requirejs.config({
+                        paths: {
+                            opal: OpalLibraryPath
+                        }
+                    });
+                </script>
+            </wpm-package>
+            <wpm-package id="dialog-polyfill">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Polyfill for dialogs",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.0",
+    "license": "BSD",
+    "documentationLink": "https://github.com/GoogleChrome/dialog-polyfill"
+}
+
+</script>
+
+                <link href="https://cdn.jsdelivr.net/npm/dialog-polyfill@0.5.6/dist/dialog-polyfill.css" rel="stylesheet" type="text/css"/>
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/dialog-polyfill@0.5.6/dist/dialog-polyfill.min.js");
+                </script>
+            </wpm-package>
+            
+            <wpm-package id="fastdiff">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Fast Diff",
+    "dependencies": [
+        "#requirejs"
+    ],
+    "assets": [],
+    "version": "2019",
+    "license": "Apache 2.0",
+    "documentationLink": "https://github.com/google/diff-match-patch"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/fastdiff/2019/fastdiff.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="pixijs">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Pixijs library",
+    "dependencies": [
+    ],
+    "assets": [],
+    "version": "6.0.2",
+    "changelog": {},
+    "license": "MIT",
+    "documentationLink": "https://www.pixijs.com"
+}
+
+</script>
+
+                <script type="disabled">
+                    //Load pixi into global space?
+                    let pixiJsUrl = "https://libraries.projects.cavi.au.dk/javascript/PixiCanvas/pixi.min.js";
+                    wpm.requireExternal("https://cdn.jsdelivr.net/npm/pixi.js-legacy@6.0.2/dist/browser/pixi-legacy.min.js");
+                </script>
+            </wpm-package>
+            
+            <wpm-package id="material-design-components">
+                <script id="components-descriptor-script" type="descriptor">
+{
+    "description": "Material Design UI (full minified CDN version)",
+    "dependencies": [],
+    "assets": [],
+    "license": "MIT",
+    "version": "0.1"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://unpkg.com/material-components-web@7.0.0/dist/material-components-web.min.js");
+                </script>
+                <link href="https://unpkg.com/material-components-web@7.0.0/dist/material-components-web.min.css" rel="stylesheet" type="text/css"/>
+            </wpm-package>
+            <wpm-package id="material-design-icons">
+                <script id="icons-descriptor-script" type="descriptor">
+{
+    "description": "Material Design Icons (full minified CDN version)",
+    "dependencies": [],
+    "assets": [],
+    "license": "Apache 2.0",
+    "version": "0.1",
+    "documentationLink": "https://github.com/google/material-design-icons"
+}
+
+</script>
+
+                <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet" type="text/css"/>
+            </wpm-package>
+
+            <wpm-package id="golden-layout">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Golden Layout",
+    "dependencies": [
+        "#requirejs",
+        "#cQuery"
+    ],
+    "assets": [],
+    "version": "1.0",
+    "changelog": {
+        "1.0": "Initial version"
+    },
+    "documentationLink": "https://golden-layout.com/",
+    "license": "MIT"
+}
+
+</script>
+
+                <script type="disabled">
+
+                    window.GoldenLayoutPath = "https://libraries.projects.cavi.au.dk/javascript/golden-layout";
+
+                    let goldenLayoutLoadPromise = null;
+
+                    window.loadGoldenLayout = async (bodyElement) => {
+                        if(goldenLayoutLoadPromise != null) {
+                            console.trace();
+                            await goldenLayoutLoadPromise;
+                            return;
+                        }
+
+                        goldenLayoutLoadPromise = new Promise(async (resolve)=>{
+
+                            console.log("Loading GoldenLayout with body replacement:", bodyElement);
+
+                            //Find top component after html
+                            let topLevelParent = bodyElement;
+                            while(topLevelParent.parentNode != null && !topLevelParent.parentNode.matches("html")) {
+                                topLevelParent = topLevelParent.parentNode;
+                            }
+
+                            await wpm.requireExternal("https://code.jquery.com/jquery-3.4.1.slim.min.js");
+
+                            let origJQueryOffset = jQuery.fn.offset;
+
+                            jQuery.fn.offset = function() {
+                                let el = this[0];
+                                var rect = el.getBoundingClientRect();
+
+                                let bounds = topLevelParent.getBoundingClientRect();
+
+                                return {
+                                  top: rect.top - bounds.y  + topLevelParent.scrollTop,
+                                  left: rect.left - bounds.x + topLevelParent.scrollLeft
+                                };
+                            };
+
+                            let origJqueryCss = jQuery.fn.css;
+
+                            jQuery.fn.css = function(...args) {
+                                if(this.is("body") || this.is("html")) {
+                                    console.log("Skipping css on html and body");
+                                    return;
+                                }
+
+                                return origJqueryCss.bind(this)(...args);
+                            };
+
+                            //Setup override event listener
+                            var origAddEventListener = EventTarget.prototype.addEventListener;
+                            EventTarget.prototype.addEventListener = function(type, fn, capture) {
+                                if(type === "mousedown" && this.matches != null && (this.matches(".lm_tab") || this.matches(".lm_splitter"))) {
+                                    origAddEventListener.bind(this)(type, (evt)=>{
+                                        let bounds = topLevelParent.getBoundingClientRect();
+
+                                        let evtOverrides = new Map();
+
+                                        evtOverrides.set("pageX", evt.pageX - bounds.x);
+                                        evtOverrides.set("pageY", evt.pageY - bounds.y);
+
+                                        let evtProxy = new Proxy(evt, {
+                                            get: (obj, prop)=>{
+                                                if(evtOverrides.has(prop)) {
+                                                    let override = evtOverrides.get(prop);
+                                                    return typeof override === "function" ? override.bind(obj) : override;
+                                                } else {
+                                                    return typeof obj[prop] === "function" ? obj[prop].bind(obj) : obj[prop];
+                                                }
+                                            }
+                                        });
+
+                                        fn(evtProxy);
+
+                                    }, capture);
+                                } else {
+                                    origAddEventListener.bind(this)(type, fn, capture);
+                                }
+                            }
+
+                            await wpm.requireExternal(GoldenLayoutPath+"/goldenlayout-base.css");
+                            await wpm.requireExternal(GoldenLayoutPath+"/goldenlayout-light-theme.css");
+
+                            let documentOverrides = new Map();
+
+                            documentOverrides.set("body", bodyElement);
+
+                            documentOverrides.set("addEventListener", (eventName, callback, options)=>{
+                                if(options != null) {
+                                    console.log("OPTIONS!!!", options);
+                                }
+
+                                cQuery(document).on(eventName, (evt)=>{
+                                    let bounds = topLevelParent.getBoundingClientRect();
+
+                                    let evtOverrides = new Map();
+
+                                    evtOverrides.set("pageX", evt.pageX - bounds.x);
+                                    evtOverrides.set("pageY", evt.pageY - bounds.y);
+
+                                    let evtProxy = new Proxy(evt, {
+                                        get: (obj, prop)=>{
+                                            if(evtOverrides.has(prop)) {
+                                                let override = evtOverrides.get(prop);
+                                                return typeof override === "function" ? override.bind(obj) : override;
+                                            } else {
+                                                return typeof obj[prop] === "function" ? obj[prop].bind(obj) : obj[prop];
+                                            }
+                                        }
+                                    });
+
+                                    callback(evtProxy);
+                                }, options);
+                            });
+
+                            documentOverrides.set("removeEventListener", (eventName, callback, options)=>{
+                                cQuery(document).off(eventName);
+                            });
+
+                            documentOverrides.set("querySelector", (selector)=>{
+                                console.log("querySelector", selector);
+                                return document.querySelector(selector);
+                            });
+
+                            documentOverrides.set("querySelectorAll", (selector)=>{
+                                console.log("querySelectorAll", selector);
+                                return document.querySelectorAll(selector);
+                            });
+
+                            let documentProxy = new Proxy(document, {
+                                get: (obj, prop)=>{
+                                    if(documentOverrides.has(prop)) {
+                                        let override = documentOverrides.get(prop);
+                                        return typeof override === "function" ? override.bind(obj) : override;
+                                    } else {
+                                        return typeof obj[prop] === "function" ? obj[prop].bind(obj) : obj[prop];
+                                    }
+                                }
+                            });
+
+                            async function internalLoad(document) {
+
+                                let response = await fetch(GoldenLayoutPath+"/goldenlayout.min.js", {credentials: 'same-origin'});
+                                let scriptContent = await response.text();
+
+                                let origDefine = window.define;
+                                if (window.define != null) {
+                                    window.define = null;
+                                }
+
+                                eval(scriptContent);
+
+                                //Restore previous define, if this script did not set define
+                                if (window.define === null && origDefine != null) {
+                                    window.define = origDefine;
+                                }
+                            }
+
+                            await internalLoad(documentProxy);
+
+                            resolve();
+                        });
+
+                        await goldenLayoutLoadPromise;
+                    };
+                </script>
+            </wpm-package>
+            <wpm-package id="golden-layout_material-design-theme">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Material Design Theme bindings for Golden Layout",
+    "dependencies": [
+        "#golden-layout"
+    ],
+    "assets": [],
+    "version": "1.0",
+    "changelog": {
+        "1.0": "Initial version"
+    },
+    "license": "Apache 2.0"
+}
+
+</script>
+
+                <style id="gl-mdc-binding-style">
+.lm_goldenlayout .lm_content {
+  background: var(--mdc-theme-background); }
+
+.lm_goldenlayout .lm_header .lm_tab {
+  background: var(--mdc-theme-surface);
+  border: 0;
+  user-select: none; }
+  .lm_goldenlayout .lm_header .lm_tab.lm_active {
+    border-bottom: 2px solid var(--mdc-theme-primary);
+    box-shadow: none;
+    padding-bottom: 4px; }
+    .lm_goldenlayout .lm_header .lm_tab.lm_active:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: var(--mdc-theme-primary);
+      opacity: 0.04;
+      content: "";
+      width: 100%;
+      height: 100%; }
+</style>
+
+            </wpm-package>
+            <wpm-package id="ohm-js">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "ohm-js parser",
+    "dependencies": [],
+    "assets": [],
+    "version": "15.4.1",
+    "license": "MIT",
+    "documentationLink": "https://github.com/harc/ohm"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("//unpkg.com/ohm-js@15.4.1/dist/ohm.min.js");
+                </script>
+            </wpm-package>     
+            <wpm-package id="qrcodejs">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "QR code generator",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.0.0",
+    "license": "MIT",
+    "documentationLink": "https://davidshimjs.github.io/qrcodejs/"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/qrcodejs/qrcode.min.js");
+                </script>
+            </wpm-package>                   
+            <wpm-package id="html2canvas">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "A screengrabber in js using canvas elements",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.0.0",
+    "license": "MIT",
+    "documentationLink": "http://html2canvas.hertzen.com/"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/html2canvas/html2canvas.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="p5js">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "p5js",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.0.0",
+    "license": "LGPL 2.1",
+    "documentationLink": "https://p5js.org/",
+    "documentationLicense": "CC-NC-SA 4.0"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="doppio">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Doppio JavaVM",
+    "dependencies": ["#setImmediate", "#browserfs"],
+    "assets": [],
+    "version": "0.5",
+    "license": "MIT",
+    "documentationLink": "https://plasma-umass.org/doppio-demo/"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/doppio/doppio.js");
+                </script>
+            </wpm-package>          
+            <wpm-package id="browserfs">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "BrowserFS - A filesystem in the browser",
+    "dependencies": [],
+    "assets": [],
+    "version": "?",
+    "license": "MIT + ?",
+    "documentationLink": "https://github.com/jvilk/BrowserFS"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/browserfs/browserfs.min.js");
+                </script>
+            </wpm-package>   
+            <wpm-package id="brython">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Python in the browser",
+    "dependencies": [],
+    "assets": [],
+    "version": "3.8.0",
+    "changelog": {
+        "3.8.0": "First WPM version"
+    },
+    "documentationLink": "https://github.com/brython-dev/brython",
+    "license": "BSD-3-Clause"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal(["https://libraries.projects.cavi.au.dk/javascript/brython/brython.js"]);
+                    await wpm.requireExternal(["https://libraries.projects.cavi.au.dk/javascript/brython/brython_stdlib.js"]);
+                </script>
+            </wpm-package>                           
+            <wpm-package id="setImmediate">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "setImmediate polyfill",
+    "dependencies": [],
+    "assets": [],
+    "version": "?"
+}
+
+</script>
+
+                <script type="disabled">
+                    if (typeof setImmediate === "undefined"){
+                        await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/setimmediate/setImmediate.js");
+                    }
+                </script>
+            </wpm-package>               
+            <wpm-package id="fengari">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Lua VM for javascript",
+    "dependencies": [
+        "#requirejs"
+    ],
+    "assets": [],
+    "license": "MIT",
+    "version": "0.1.4",
+    "documentationLink": "https://github.com/fengari-lua/fengari"
+}
+
+</script>
+
+                <script type="disabled">
+                    {
+                        requirejs.config({
+                            paths: {
+                                fengari: "https://libraries.projects.cavi.au.dk/javascript/fengari/"
+                            }
+                        });
+                    }
+                </script>
+            </wpm-package>
+            <wpm-package id="esprima">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "p5js",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.0.0",
+    "license": "LGPL 2.1",
+    "documentationLink": "https://p5js.org/",
+    "documentationLicense": "CC-NC-SA 4.0"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("//unpkg.com/esprima@~4.0/dist/esprima.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="fontawesome">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Font Awesome - An icon set as a font",
+    "dependencies": [],
+    "assets": [],
+    "license": "Font Awesome",
+    "version": "5.15.4",
+    "documentationLink": "https://fontawesome.com/"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("//kit.fontawesome.com/ce5d6e118c.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="LiveElement">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "A small javascript library to work with 'Live' elements, as they enter the dom",
+    "dependencies": [
+        "rxjs"
+    ],
+    "assets": [],
+    "version": "0.1",
+    "changelog": {
+        "0.1": "Initial version"
+    },
+    "license": "Apache 2.0",
+    "documentationLink": ""
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/LiveElement/1.0/LiveElement.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="BlocklyCore">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "A JavaScript library for building visual programming editors.",
+    "dependencies": [
+    ],
+    "assets": [],
+    "version": "4.20201217.0",
+    "license": "Apache 2.0",
+    "documentationLink": "https://developers.google.com/blockly"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/blockly@4.20201217.0/blockly_compressed.js");
+                    //await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/blockly_test/blockly_uncompressed.js");
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/blockly@4.20201217.0/javascript_compressed.js");
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/blockly@4.20201217.0/msg/en.js");
+
+                    //Fix Blockly.SNAP_RADIUS being used for BUMPING as well
+                    Blockly.BUMP_RADIUS = 0;
+                    Blockly.BlockSvg.prototype.bumpNeighbours = function() {
+                      if (!this.workspace) {
+                        return;  // Deleted block.
+                      }
+                      if (this.workspace.isDragging()) {
+                        return;  // Don't bump blocks during a drag.
+                      }
+                      var rootBlock = this.getRootBlock();
+                      if (rootBlock.isInFlyout) {
+                        return;  // Don't move blocks around in a flyout.
+                      }
+                      // Loop through every connection on this block.
+                      var myConnections = this.getConnections_(false);
+                      for (var i = 0, connection; (connection = myConnections[i]); i++) {
+
+                        // Spider down from this block bumping all sub-blocks.
+                        if (connection.isConnected() && connection.isSuperior()) {
+                          connection.targetBlock().bumpNeighbours();
+                        }
+
+                        var neighbours = connection.neighbours(Blockly.BUMP_RADIUS);
+                        for (var j = 0, otherConnection; (otherConnection = neighbours[j]); j++) {
+
+                          // If both connections are connected, that's probably fine.  But if
+                          // either one of them is unconnected, then there could be confusion.
+                          if (!connection.isConnected() || !otherConnection.isConnected()) {
+                            // Only bump blocks if they are from different tree structures.
+                            if (otherConnection.getSourceBlock().getRootBlock() != rootBlock) {
+
+                              // Always bump the inferior block.
+                              if (connection.isSuperior()) {
+                                otherConnection.bumpAwayFrom(connection);
+                              } else {
+                                connection.bumpAwayFrom(otherConnection);
+                              }
+                            }
+                          }
+                        }
+                      }
+                    };
+                </script>
+            </wpm-package>
+            <wpm-package id="rxjs">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "RxJS is a library for composing asynchronous and event-based programs by using observable sequences.",
+    "dependencies": [
+    ],
+    "assets": [],
+    "version": "6.1.0",
+    "changelog": {},
+    "license": "Apache 2.0",
+    "documentationLink": "https://rxjs-dev.firebaseapp.com/api"
+}
+
+</script>
+
+                <script type="disabled">
+                    //Get RXJS library used for Subject and Observable and more...
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.1.0/rxjs.umd.js");
+                </script>
+            </wpm-package>
+
+            <wpm-package id="aaditmshah-lexer">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "An elegant armor-plated JavaScript lexer modelled after flex. Easily extensible to tailor to your need for perfection.",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.7.8",
+    "license": "MIT",
+    "documentationLink": "https://github.com/aaditmshah/lexer"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/gh/aaditmshah/lexer@1.7.8/lexer.min.js");
+                </script>
+            </wpm-package>
+
+            <wpm-package id="acorn">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Acorn javascript parser",
+    "dependencies": [],
+    "assets": [],
+    "version": "8.0.4",
+    "license": "MIT",
+    "documentationLink": "https://github.com/acornjs/acorn"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/acorn/8.0.4/acorn.min.js");
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/acorn-walk/8.0.1/walk.min.js");
+                </script>
+            </wpm-package>
+
+            <wpm-package id="astring">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Tiny and fast JavaScript code generator from an ESTree-compliant AST.",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.6.0",
+    "license": "MIT",
+    "documentationLink": "https://github.com/davidbonnet/astring"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/astring@1.6.0/dist/astring.min.js");
+                </script>
+            </wpm-package>
+
+            <wpm-package id="meriyah">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "100% compliant, self-hosted javascript parser with high focus on both performance and stability. Stable and already used in production.",
+    "dependencies": [],
+    "assets": [],
+    "version": "3.1.6",
+    "license": "ISC",
+    "documentationLink": "https://github.com/meriyah/meriyah/"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/meriyah@3.1.6/dist/meriyah.iife.min.js");
+                </script>
+            </wpm-package>
+
+            <wpm-package id="jsbeautify">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "This little beautifier will reformat and re-indent bookmarklets, ugly JavaScript, unpack scripts packed by Dean Edward’s popular packer, as well as partly deobfuscate scripts processed by the npm package javascript-obfuscator.",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.13.4",
+    "license": "MIT",
+    "documentationLink": "https://github.com/beautify-web/js-beautify"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.13.4/beautify.min.js");
+                </script>
+            </wpm-package>
+
+            <wpm-package id="alertifyjs">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.13.1",
+    "license": "GPL-3.0",
+    "documentationLink": "https://alertifyjs.com"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js");
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css");
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css");
+                </script>
+            </wpm-package>
+
+            <wpm-package id="izitoast">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Elegant, responsive, flexible and lightweight notification plugin with no dependencies.",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.4.0",
+    "license": "Apache 2.0",
+    "documentationLink": "https://izitoast.marcelodolza.com/"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js");
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css");
+                </script>
+            </wpm-package>
+
+            <wpm-package id="threejs">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "JavaScript 3D library",
+    "dependencies": [],
+    "assets": [],
+    "version": "r125",
+    "license": "MIT",
+    "documentationLink": "https://threejs.org/"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/three.js/r125/three.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="mathjs">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Math.js library",
+    "dependencies": [],
+    "assets": [],
+    "version": "9.4.3",
+    "license": "Apache 2.0",
+    "documentationLink": "https://mathjs.org/docs/index.html"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://unpkg.com/mathjs@9.4.3/lib/browser/math.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="potpack">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Potpack library",
+    "dependencies": [
+    ],
+    "assets": [],
+    "version": "1.0.1",
+    "changelog": {},
+    "license": "ISC",
+    "documentationLink": "https://github.com/mapbox/potpack"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/potpack@1.0.1/index.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="js-yaml">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "This is an implementation of YAML, a human-friendly data serialization language. Started as PyYAML port, it was completely rewritten from scratch. Now it's very fast, and supports 1.2 spec.",
+    "dependencies": [],
+    "assets": [],
+    "version": "4.1.0",
+    "license": "MIT",
+    "documentationLink": "https://github.com/nodeca/js-yaml"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js");
+                </script>
+            </wpm-package>       
+            <wpm-package id="UUIDGenerator">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "An UUID generator",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.0",
+    "license": "Apache 2.0",
+    "changelog": {
+        "1.0": "Initial version"
+    }
+}
+
+</script>
+
+                <script id="generator-script" type="disabled">
+/**
+ *  UUIDGenerator
+ *  Provides unqiue IDs
+ * 
+ *  Copyright 2020, 2021 Rolf Bagge, Janus B. Kristensen, CAVI,
+ *  Center for Advanced Visualization and Interacion, Aarhus University
+ *    
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+**/
+
+window.UUIDGenerator = class UUIDGenerator {
+    /**
+     * Generates a probably unique id
+     * @param {type} prefix a prefix for the id
+     * @param {type} length the length of the id
+     * @returns {String} the generated id
+     */
+    static generateUUID(prefix = "", length = 20) {
+        function dec2hex(dec) {
+            return ('0' + dec.toString(16)).substr(-2);
+        }
+
+        let arr = new Uint8Array((length || 40) / 2);
+        window.crypto.getRandomValues(arr);
+        return prefix + Array.from(arr, dec2hex).join('');
+    }
+};
+
+</script>
+
+            </wpm-package>            
+        </div>
+    </body>
+</html> 
+

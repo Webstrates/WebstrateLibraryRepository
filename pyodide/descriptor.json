@@ -1,0 +1,10 @@
+{
+    "description": "Pyodide, The Python scientific stack, compiled to WebAssembly.",
+    "dependencies": [
+        "#requirejs"
+    ],
+    "assets": [],
+    "version": "?",
+    "license": "MPL-2.0",
+    "documentationLink": "https://pyodide.readthedocs.io/en/latest/"
+}

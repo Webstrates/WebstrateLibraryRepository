@@ -1,0 +1,10 @@
+{
+    "description": "Ace Editor",
+    "dependencies": [
+        "#requirejs"
+    ],
+    "assets": [],
+    "version": "1.4.5",
+    "license": "BSD",
+    "documentationLink": "https://ace.c9.io"
+}

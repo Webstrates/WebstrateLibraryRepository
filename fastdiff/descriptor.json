@@ -1,0 +1,10 @@
+{
+    "description": "Fast Diff",
+    "dependencies": [
+        "#requirejs"
+    ],
+    "assets": [],
+    "version": "2019",
+    "license": "Apache 2.0",
+    "documentationLink": "https://github.com/google/diff-match-patch"
+}

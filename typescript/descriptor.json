@@ -1,0 +1,10 @@
+{
+    "description": "Typescript compiler for js",
+    "dependencies": [
+        "#requirejs"
+    ],
+    "assets": [],
+    "version": "3.5.2",
+    "license": "Apache 2.0",
+    "documentationLink": "http://www.typescriptlang.org/docs/home.html"
+}

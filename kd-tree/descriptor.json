@@ -1,0 +1,8 @@
+{
+    "description": "JavaScript kd-tree implementation",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.01",
+    "license": "MIT",
+    "documentationLink": "https://github.com/ubilabs/kd-tree-javascript"
+}

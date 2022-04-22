@@ -1,0 +1,11 @@
+{
+    "description": "FastDOM, make sure measure and mutate dom operations are made correctly",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.0",
+    "changelog": {
+        "1.0": "Initial version"
+    },
+    "license": "MIT",
+    "documentationLink": "https://github.com/wilsonpage/fastdom"
+}

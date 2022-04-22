@@ -1,0 +1,15 @@
+{
+    "description": "Drawing canvas, implemented using pixijs",
+    "dependencies": [
+        "#cQuery",
+        "#CaviTouch",
+        "#BezierCurves",
+        "#pixijs"
+    ],
+    "assets": [],
+    "version": "1.0",
+    "changelog": {
+        "1.0": "Initial version"
+    },
+    "documentationLink": ""
+}

@@ -1,0 +1,10 @@
+{
+    "description": "An UUID generator",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.0",
+    "license": "Apache 2.0",
+    "changelog": {
+        "1.0": "Initial version"
+    }
+}

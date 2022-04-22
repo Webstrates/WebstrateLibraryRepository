@@ -1,0 +1,8 @@
+{
+    "description": "Ultra lightweight, customizable, simple autocomplete widget",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.1.4",
+    "license": "MIT",        
+    "documentationLink": "https://leaverou.github.io/awesomplete/#basic-usage"
+}

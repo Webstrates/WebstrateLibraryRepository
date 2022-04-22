@@ -1,0 +1,12 @@
+{
+    "description": "A very efficient JS implementation calculating the Levenshtein distance, i.e. the difference between two strings.",
+    "dependencies": [
+    ],
+    "assets": [],
+    "version": "0.1",
+    "changelog": {
+        "0.1": "Initial version"
+    },
+    "license":"MIT",
+    "documentationLink": "https://github.com/gustf/js-levenshtein"
+}

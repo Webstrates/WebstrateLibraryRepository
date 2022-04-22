@@ -1,0 +1,9 @@
+{
+    "description": "p5js",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.0.0",
+    "license": "LGPL 2.1",
+    "documentationLink": "https://p5js.org/",
+    "documentationLicense": "CC-NC-SA 4.0"
+}

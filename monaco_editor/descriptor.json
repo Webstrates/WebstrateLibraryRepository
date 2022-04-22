@@ -1,0 +1,10 @@
+{
+    "description": "Monaco Editor",
+    "dependencies": [
+        "#requirejs"
+    ],
+    "assets": [],
+    "version": "0.20.0",
+    "license": "MIT",
+    "documentationLink": "https://microsoft.github.io/monaco-editor/api/index.html"
+}

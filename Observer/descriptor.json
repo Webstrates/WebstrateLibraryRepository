@@ -1,0 +1,8 @@
+{
+    "description": "Webstrate iframe observer, can wait for transclude, and changes to have propagated to server",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.0",
+    "license": "Apache 2.0",
+    "documentationLink": ""
+}
