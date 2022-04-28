@@ -661,7 +661,7 @@
         "#requirejs"
     ],
     "assets": [],
-    "version": "0.20.0",
+    "version": "0.33.0",
     "license": "MIT",
     "documentationLink": "https://microsoft.github.io/monaco-editor/api/index.html"
 }
@@ -669,7 +669,7 @@
 </script>
 
                 <script type="disabled">
-                    window.MonacoLibraryPath = "https://libraries.projects.cavi.au.dk/javascript/monaco/0.23/vs";
+                    window.MonacoLibraryPath = "https://libraries.projects.cavi.au.dk/javascript/monaco/0.33/vs";
                     
                     {
                         //Configure monaco in require loader
@@ -683,9 +683,9 @@
                             getWorkerUrl: function(workerId, label) {
                               return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
                                 self.MonacoEnvironment = {
-                                  baseUrl: 'https://libraries.projects.cavi.au.dk/javascript/monaco/0.23/'
+                                  baseUrl: 'https://libraries.projects.cavi.au.dk/javascript/monaco/0.33/'
                                 };
-                                importScripts('https://libraries.projects.cavi.au.dk/javascript/monaco/0.23/vs/base/worker/workerMain.js');`
+                                importScripts('https://libraries.projects.cavi.au.dk/javascript/monaco/0.33/vs/base/worker/workerMain.js');`
                               )}`;
                             }
                           };
