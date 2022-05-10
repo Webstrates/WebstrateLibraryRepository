@@ -6,6 +6,14 @@
     </head>
     <body>
         <div class="packages">
+            <wpm-package id="fast-copy">
+                <script type="descriptor" src="fast-copy/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/fast-copy@2.1.3/dist/fast-copy.min.js");
+                    window.fastCopy = window["fast-copy"];
+                </script>
+            </wpm-package>
+
             <wpm-package id="cQuery">
                 <script type="descriptor" src="cQuery/descriptor.json"></script>
                 <script type="disabled">
