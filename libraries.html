@@ -205,7 +205,7 @@
 </script>
 
                 <script type="disabled">
-                    window.LatexJSLibraryPath = "https://cdn.jsdelivr.net/npm/latex.js@0.12.1/dist/";
+                    window.LatexJSLibraryPath = "https://cdn.jsdelivr.net/npm/latex.js@0.12.1/dist";
                 </script>
             </wpm-package>   
             <wpm-package id="Quadtree">
@@ -1129,10 +1129,15 @@
 .lm_goldenlayout .lm_content {
   background: var(--mdc-theme-background); }
 
+.lm_maximised .lm_header {
+  background-color: var(--mdc-theme-surface); }
+
 .lm_goldenlayout .lm_header .lm_tab {
   background: var(--mdc-theme-surface);
   border: 0;
   user-select: none; }
+  .lm_goldenlayout .lm_header .lm_tab .lm_title {
+    color: var(--mdc-theme-on-surface); }
   .lm_goldenlayout .lm_header .lm_tab.lm_active {
     border-bottom: 2px solid var(--mdc-theme-primary);
     box-shadow: none;

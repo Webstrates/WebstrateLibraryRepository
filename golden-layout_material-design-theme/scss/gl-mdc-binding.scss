@@ -1,10 +1,17 @@
 .lm_goldenlayout .lm_content {
     background: var(--mdc-theme-background);
 }
+.lm_maximised .lm_header {
+    background-color: var(--mdc-theme-surface);
+}
 .lm_goldenlayout .lm_header .lm_tab {
     background: var(--mdc-theme-surface);
     border: 0;
     user-select: none;
+    
+    .lm_title {
+        color: var(--mdc-theme-on-surface);
+    }
     
     &.lm_active {
         border-bottom: 2px solid var(--mdc-theme-primary);
