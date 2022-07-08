@@ -1718,7 +1718,44 @@ window.UUIDGenerator = class UUIDGenerator {
 
 </script>
 
-            </wpm-package>            
+            </wpm-package>
+            <wpm-package id="KeyboardHelper">
+                <script id="descriptor-script" type="descriptor">
+{
+  "description": "A tiny helper to make keyboard shortcuts easier",
+  "dependencies": [
+  ],
+  "assets": [],
+  "version": "0.1",
+  "changelog": {
+    "0.1": "Initial version"
+  }
+}
+
+</script>
+
+                <script id="shortkeys-script" type="disabled">
+window.KeyboardHelper = class KeyboardHelper {
+    static checkKeyCombo(combo, event){
+        if (typeof combo.modifiers !== "undefined" && combo.modifiers instanceof Array){
+            if (combo.modifiers.includes("shift") && !event.shiftKey) return false;
+            if (combo.modifiers.includes("ctrl") && !event.ctrlKey) return false;
+            if (combo.modifiers.includes("alt") && !event.altKey) return false;
+            if (combo.modifiers.includes("meta") && !event.metaKey) return false;
+        }
+        let eventTypes = combo.events;
+        //If no eventtypes defines, default to "keyup"
+        if (typeof eventTypes === "undefined") {
+            eventTypes = ["keyup"];
+        }
+        if (!eventTypes.includes(event.type)) return false;
+        return combo.key === event.code;
+    }
+}
+
+</script>
+
+            </wpm-package>
         </div>
     </body>
 </html> 
