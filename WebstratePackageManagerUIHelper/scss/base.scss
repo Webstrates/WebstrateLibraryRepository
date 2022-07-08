@@ -1,0 +1,135 @@
+
+.wpm_ui_helper_list {
+    display: block;
+    width: 100%;
+    
+    .wpm_ui_helper_clearfix {
+        clear: both;
+    }
+    
+    .wpm_ui_helper_package, .wpm_ui_helper_package_header {
+        $edgeMargin: 0.5em;
+        
+        display: flex;
+        position: relative;
+        flex-direction: row;
+        word-wrap: break-word;
+        padding: $edgeMargin;
+        background: rgba(100,100,150,0.05);
+        &:nth-child(2n){
+            background: rgba(100,100,150,0.1);
+        }
+        
+        .wpm_ui_helper_packageversion, .wpm_ui_helper_installedversion {
+            width: 4em;
+            &:empty:before {
+                content: "-";
+            }
+        }
+        .wpm_ui_helper_action {
+            width: 10em;
+        }
+        .wpm_ui_helper_friendlyname ~ .wpm_ui_helper_packagename {
+            display: none;
+        }
+        .wpm_ui_helper_packagename, .wpm_ui_helper_friendlyname {
+            min-width: 3em;
+            word-wrap: break-word;
+            flex-grow: 1;
+        }
+        .wpm_ui_helper_description, .wpm_ui_helper_changelog, .wpm_ui_helper_documentationlink {
+            display: none;
+        }
+        .wpm_ui_helper_changelog {
+            opacity: 0.6;
+            font-size: 0.9em;
+            font-style: italic;
+            max-height: 10em;
+            overflow-y: auto;
+            
+            .wpm_ui_helper_cle_head {
+                float: left;
+                font-weight: bold;
+                margin-right: 1em;
+            }
+        }
+        
+        &.wpm_ui_helper_busy {
+            opacity: 0.5;
+        }
+        &.wpm_ui_helper_installed > :first-child {
+            font-weight: bold;
+        }
+        
+        &.wpm_ui_helper_transient > :first-child {
+            &:after {
+                content: " [transient]";
+            }
+        }
+        
+        &.wpm_ui_helper_selected {
+            display: block;      
+            $floatWidth: 30%;
+            padding-left: 1em;
+            
+            &:before {
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,7db9e8+100&1+0,0+100;Blue+to+Transparent */
+background: -moz-linear-gradient(left, rgba(30,87,153,1) 0%, rgba(125,185,232,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, rgba(30,87,153,1) 0%,rgba(125,185,232,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, rgba(30,87,153,1) 0%,rgba(125,185,232,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#007db9e8',GradientType=1 ); /* IE6-9 */                
+                
+                position: absolute;
+                opacity: 0.1;
+                left: 0;
+                width: 1em;
+                height: 100%;
+                top: 0;
+                content: "";
+            }
+            
+            .wpm_ui_helper_packagename {
+                display: block;
+                padding-right: 10em; /* action space */
+            }
+            .wpm_ui_helper_friendlyname ~ .wpm_ui_helper_packagename {       
+                display: block;
+                font-size: 0.8em;
+                opacity: 0.8;
+                padding-top: 0;
+                &:before {
+                    content: "#";
+                }
+            }            
+            .wpm_ui_helper_action {
+                position: absolute;
+                top: 0;
+                margin: $edgeMargin;        
+                right: 0;
+            }
+            .wpm_ui_helper_description, .wpm_ui_helper_changelog, .wpm_ui_helper_documentationlink  {
+                display: block;
+                margin-top: 0.5em;                
+            }
+            .wpm_ui_helper_packageversion:before {
+                content: "Repository Version: ";
+            }
+            .wpm_ui_helper_installedversion:before {                
+                content: "Installed Version: ";
+            }
+            .wpm_ui_helper_packageversion, .wpm_ui_helper_installedversion {
+                width: $floatWidth;
+                float: right;
+                clear: right;
+                text-align: right;
+                font-size: 0.9em;
+            }            
+        }
+    }
+    
+    .wpm_ui_helper_package_header {
+        background: rgba(100,100,150,0.15);
+        font-weight: bold;
+        border-bottom: 1px solid grey;
+    }    
+}

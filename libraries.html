@@ -1756,6 +1756,339 @@ window.KeyboardHelper = class KeyboardHelper {
 </script>
 
             </wpm-package>
+            <wpm-package id="WebstratePackageManagerUIHelper">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Helps create UIs based on metadata from WebstratePackageManager packages",
+    "dependencies": [
+        "#cQuery"
+    ],
+    "assets": [],
+    "version": "0.1",
+    "changelog": {
+        "0.1": "Initial version"
+    }
+}
+
+</script>
+
+                <script id="wpm_ui_helper-script" type="disabled">
+window.WebstratePackageManagerUIHelper = class WebstratePackageManagerUIHelper {
+    static async buildPackageListView(repositories, config={}) {
+        if (typeof config.packageEntryView === "undefined"){
+            config.packageEntryView = function(thePackage){return WebstratePackageManagerUIHelper.buildCompactPackageView(thePackage)};
+        }
+        if (typeof config.packageHeaderView === "undefined"){
+            config.packageHeaderView = function(thePackage){return WebstratePackageManagerUIHelper.buildCompactHeaderView()};
+        }        
+        if (typeof config.packageFilter === "undefined"){
+            config.packageFilter = function(thePackage){return true;};
+        }        
+
+        let view = cQuery("<div class='wpm_ui_helper_list'></div>");
+        view[0].repositories = repositories;
+        view[0].config = config;
+        view.append(config.packageHeaderView());
+                
+        // Get already installed packages
+        let packagesLeftToShow = [];
+        if (typeof config.showAllPackages === "undefined" || config.showAllPackages===true){
+            packagesLeftToShow = packagesLeftToShow.concat(await WPMv2.getCurrentlyInstalledPackages());
+        }
+
+        // Get packages from requested repositories        
+        for (let i=0; i<repositories.length; i++){
+            let packages = await WPMv2.getPackagesFromRepository(repositories[i]);
+            for (let o=0; o<packages.length; o++){
+                if (config.packageFilter(packages[o])){
+                    // Build the view
+                    let packageView = config.packageEntryView(packages[o]);
+                    view.append(packageView);
+                    
+                    // Remove it from list of packages to show
+                    packagesLeftToShow = packagesLeftToShow.filter(function(repositoryPackage){
+                        return repositoryPackage.name!==packages[o].name;
+                    });
+                }
+            }
+        }
+        // Packages from other repositories must fetch update info directly
+        for (let i=0; i<packagesLeftToShow.length; i++){
+            if (config.packageFilter(packagesLeftToShow[i])){
+                let newPackage = await WPMv2.getLatestPackageFromPackage(packagesLeftToShow[i]);
+                view.append(config.packageEntryView(newPackage));
+            }
+        }
+
+        return view;
+    }
+    
+    static buildCompactHeaderView(config={}){    
+        return cQuery(`<div class='wpm_ui_helper_package_header wpm_ui_helper_compact'>
+                <span class='wpm_ui_helper_packagename'>Package</span>
+                <span class='wpm_ui_helper_packageversion'>Repos.</span>
+                <span class='wpm_ui_helper_installedversion'>Here</span>
+                <button class='wpm_ui_helper_action'>Update All</button></div>`);
+    }
+    
+    static buildCompactPackageView(thePackage, config={}){
+        let self = this;
+        let packageContainer = cQuery("<div class='wpm_ui_helper_package wpm_ui_helper_compact'></div>");
+
+        if (typeof config.onPackageInstalled==="undefined"){
+            config.onPackageInstalled = function(){};
+        }
+        if (typeof config.onPackageSelection==="undefined"){
+            config.onPackageSelection = function(aPackage){
+                if (aPackage.name===thePackage.name){
+                    cQuery(".wpm_ui_helper_selected").removeClass("wpm_ui_helper_selected");
+                    packageContainer.addClass("wpm_ui_helper_selected");
+                }
+            }
+        }
+        packageContainer.on("click", function(){config.onPackageSelection(thePackage)});
+        
+        // Fetch metadata for potentially installed package
+        let metaData = wpm.readMetadata(thePackage.name);
+        if (metaData){
+            packageContainer.addClass("wpm_ui_helper_installed");
+        }
+        
+        if(cQuery(".packages transient .package#"+thePackage.name).length > 0) {
+            packageContainer.addClass("wpm_ui_helper_transient");
+        }
+       
+        if (thePackage.friendlyName){
+            packageContainer.append("<span class='wpm_ui_helper_friendlyname'>"+thePackage.friendlyName+"</span>");
+        } else {            
+            packageContainer.append("<span class='wpm_ui_helper_friendlyname'>"+thePackage.name+"</span>");
+        }
+        packageContainer.append("<span class='wpm_ui_helper_packagename'>"+thePackage.name+"</span>");
+        packageContainer.append("<span class='wpm_ui_helper_packageversion'>"+thePackage.version+"</span>");
+        packageContainer.append("<span class='wpm_ui_helper_installedversion'>"+(metaData && metaData.version?metaData.version:"")+"</span>");
+        
+        if (thePackage.description){
+            packageContainer.append("<span class='wpm_ui_helper_description'>"+thePackage.description+"</span>");
+        }
+        
+        if (thePackage.documentationLink){
+            packageContainer.append("<span class='wpm_ui_helper_documentationlink'><a href=\""+thePackage.documentationLink+"\" target=\"_blank\">Read More</a></span>");
+        }
+        
+        if (thePackage.changelog && Object.keys(thePackage.changelog).length>0){
+            let changeLog = cQuery("<div class='wpm_ui_helper_changelog'><div class='cl_header'>Recent Changes</div></div>");
+
+            // TODO : Iterate log
+            for (let version in thePackage.changelog){
+                changeLog.append("<div class='wpm_ui_helper_changeentry'><div class='wpm_ui_helper_cle_head'>"+version+"</div>"+thePackage.changelog[version]+"</div>");
+            }
+            
+
+            packageContainer.append(changeLog);
+        }
+                        
+        
+        if (config.showStateAsButton || typeof config.showStateAsButton==="undefined"){
+            let button = cQuery("<button class='wpm_ui_helper_action'></button>");
+            packageContainer.append(button);
+            
+            button.on("click", function(e){
+                packageContainer.addClass("wpm_ui_helper_busy");
+                let work = cQuery(this).data("work");
+                e.stopPropagation();                
+                work();
+            });
+
+            //Setup install/update work
+            button.data("work", function() {
+                return new Promise(function(resolve, reject) {
+                    /*
+                     * TODO: Reimplement install, maybee as require into head without static?
+                     * 
+                    WPMv2.require([thePackage]).then(function(){
+                        config.onPackageInstalled(thePackage);
+                        resolve();
+                    });
+                     */
+                });
+            });
+            
+            if (metaData){
+                if (metaData.version!==thePackage.version){
+                    button[0].innerText = "Update";
+                } else {
+                    button[0].innerText = "Remove";
+                    
+                    //Override work with remove
+                    button.data("work", async function() {
+                        /*
+                         * TODO: Reimplement remove
+                         * 
+                        // Check dependency graph          
+                        let dependencyChecks = [];
+                        let dependingPackages = [];
+                        let currentlyInstalledPackages = await WPMv2.getCurrentlyInstalledPackages();
+                        
+                        for(let p of currentlyInstalledPackages) {
+                            let dependencyResult = await wpm.findNeededDependencies([p]);
+                            if (dependencyResult.some(function(dependency){
+                                return thePackage.name===dependency.name;
+                            })){
+                                dependingPackages.push(p);
+                            }
+                        }
+                        
+                        if (dependingPackages.length > 0){                                
+                            if (confirm("Are you sure? This will also remove:\n"+dependingPackages.join("\n"))){
+                                wpm.removePackages(dependingPackages);
+                                wpm.removePackages([thePackage]);
+                            }
+                        } else {
+                            wpm.removePackages([thePackage]);
+                        }
+                        */
+                    });
+                }
+            } else {
+                button[0].innerText = "Install";
+            }
+        } else {
+            if (metaData){
+                packageContainer.append("<span>Installed</span>");
+            }
+        }
+        packageContainer.append("<div class='wpm_ui_helper_clearfix'></div>");
+        return packageContainer;
+    }
+};
+
+webstrate.on("loaded", function() {
+    var updateAll = function(){
+        cQuery(".wpm_ui_helper_list").forEach(function(view) {
+            let before = view.nextSibling;
+            let parent = view.parentNode;
+            let repositories = view.repositories;
+            let config = view.config;
+            WebstratePackageManagerUIHelper.buildPackageListView(repositories, config).then(function(newView){
+                parent.insertBefore(newView[0], before);
+                view.remove();                
+            });
+        });
+    };    
+    
+    /*
+     * TODO: Add these types of events to WPMv2
+     * 
+    // Register update callbacks
+    let wpm = new WebstratePackageManager();
+    wpm.registerInstalledPackagesCallback(updateAll);
+    wpm.registerRemovedPackagesCallback(updateAll);    
+     */
+});
+
+</script>
+
+                <style id="base-style">
+.wpm_ui_helper_list {
+  display: block;
+  width: 100%; }
+  .wpm_ui_helper_list .wpm_ui_helper_clearfix {
+    clear: both; }
+  .wpm_ui_helper_list .wpm_ui_helper_package, .wpm_ui_helper_list .wpm_ui_helper_package_header {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    word-wrap: break-word;
+    padding: 0.5em;
+    background: rgba(100, 100, 150, 0.05); }
+    .wpm_ui_helper_list .wpm_ui_helper_package:nth-child(2n), .wpm_ui_helper_list .wpm_ui_helper_package_header:nth-child(2n) {
+      background: rgba(100, 100, 150, 0.1); }
+    .wpm_ui_helper_list .wpm_ui_helper_package .wpm_ui_helper_packageversion, .wpm_ui_helper_list .wpm_ui_helper_package .wpm_ui_helper_installedversion, .wpm_ui_helper_list .wpm_ui_helper_package_header .wpm_ui_helper_packageversion, .wpm_ui_helper_list .wpm_ui_helper_package_header .wpm_ui_helper_installedversion {
+      width: 4em; }
+      .wpm_ui_helper_list .wpm_ui_helper_package .wpm_ui_helper_packageversion:empty:before, .wpm_ui_helper_list .wpm_ui_helper_package .wpm_ui_helper_installedversion:empty:before, .wpm_ui_helper_list .wpm_ui_helper_package_header .wpm_ui_helper_packageversion:empty:before, .wpm_ui_helper_list .wpm_ui_helper_package_header .wpm_ui_helper_installedversion:empty:before {
+        content: "-"; }
+    .wpm_ui_helper_list .wpm_ui_helper_package .wpm_ui_helper_action, .wpm_ui_helper_list .wpm_ui_helper_package_header .wpm_ui_helper_action {
+      width: 10em; }
+    .wpm_ui_helper_list .wpm_ui_helper_package .wpm_ui_helper_friendlyname ~ .wpm_ui_helper_packagename, .wpm_ui_helper_list .wpm_ui_helper_package_header .wpm_ui_helper_friendlyname ~ .wpm_ui_helper_packagename {
+      display: none; }
+    .wpm_ui_helper_list .wpm_ui_helper_package .wpm_ui_helper_packagename, .wpm_ui_helper_list .wpm_ui_helper_package .wpm_ui_helper_friendlyname, .wpm_ui_helper_list .wpm_ui_helper_package_header .wpm_ui_helper_packagename, .wpm_ui_helper_list .wpm_ui_helper_package_header .wpm_ui_helper_friendlyname {
+      min-width: 3em;
+      word-wrap: break-word;
+      flex-grow: 1; }
+    .wpm_ui_helper_list .wpm_ui_helper_package .wpm_ui_helper_description, .wpm_ui_helper_list .wpm_ui_helper_package .wpm_ui_helper_changelog, .wpm_ui_helper_list .wpm_ui_helper_package .wpm_ui_helper_documentationlink, .wpm_ui_helper_list .wpm_ui_helper_package_header .wpm_ui_helper_description, .wpm_ui_helper_list .wpm_ui_helper_package_header .wpm_ui_helper_changelog, .wpm_ui_helper_list .wpm_ui_helper_package_header .wpm_ui_helper_documentationlink {
+      display: none; }
+    .wpm_ui_helper_list .wpm_ui_helper_package .wpm_ui_helper_changelog, .wpm_ui_helper_list .wpm_ui_helper_package_header .wpm_ui_helper_changelog {
+      opacity: 0.6;
+      font-size: 0.9em;
+      font-style: italic;
+      max-height: 10em;
+      overflow-y: auto; }
+      .wpm_ui_helper_list .wpm_ui_helper_package .wpm_ui_helper_changelog .wpm_ui_helper_cle_head, .wpm_ui_helper_list .wpm_ui_helper_package_header .wpm_ui_helper_changelog .wpm_ui_helper_cle_head {
+        float: left;
+        font-weight: bold;
+        margin-right: 1em; }
+    .wpm_ui_helper_list .wpm_ui_helper_package.wpm_ui_helper_busy, .wpm_ui_helper_list .wpm_ui_helper_package_header.wpm_ui_helper_busy {
+      opacity: 0.5; }
+    .wpm_ui_helper_list .wpm_ui_helper_package.wpm_ui_helper_installed > :first-child, .wpm_ui_helper_list .wpm_ui_helper_package_header.wpm_ui_helper_installed > :first-child {
+      font-weight: bold; }
+    .wpm_ui_helper_list .wpm_ui_helper_package.wpm_ui_helper_transient > :first-child:after, .wpm_ui_helper_list .wpm_ui_helper_package_header.wpm_ui_helper_transient > :first-child:after {
+      content: " [transient]"; }
+    .wpm_ui_helper_list .wpm_ui_helper_package.wpm_ui_helper_selected, .wpm_ui_helper_list .wpm_ui_helper_package_header.wpm_ui_helper_selected {
+      display: block;
+      padding-left: 1em; }
+      .wpm_ui_helper_list .wpm_ui_helper_package.wpm_ui_helper_selected:before, .wpm_ui_helper_list .wpm_ui_helper_package_header.wpm_ui_helper_selected:before {
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,7db9e8+100&1+0,0+100;Blue+to+Transparent */
+        background: -moz-linear-gradient(left, #1e5799 0%, rgba(125, 185, 232, 0) 100%);
+        /* FF3.6-15 */
+        background: -webkit-linear-gradient(left, #1e5799 0%, rgba(125, 185, 232, 0) 100%);
+        /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to right, #1e5799 0%, rgba(125, 185, 232, 0) 100%);
+        /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#007db9e8',GradientType=1 );
+        /* IE6-9 */
+        position: absolute;
+        opacity: 0.1;
+        left: 0;
+        width: 1em;
+        height: 100%;
+        top: 0;
+        content: ""; }
+      .wpm_ui_helper_list .wpm_ui_helper_package.wpm_ui_helper_selected .wpm_ui_helper_packagename, .wpm_ui_helper_list .wpm_ui_helper_package_header.wpm_ui_helper_selected .wpm_ui_helper_packagename {
+        display: block;
+        padding-right: 10em;
+        /* action space */ }
+      .wpm_ui_helper_list .wpm_ui_helper_package.wpm_ui_helper_selected .wpm_ui_helper_friendlyname ~ .wpm_ui_helper_packagename, .wpm_ui_helper_list .wpm_ui_helper_package_header.wpm_ui_helper_selected .wpm_ui_helper_friendlyname ~ .wpm_ui_helper_packagename {
+        display: block;
+        font-size: 0.8em;
+        opacity: 0.8;
+        padding-top: 0; }
+        .wpm_ui_helper_list .wpm_ui_helper_package.wpm_ui_helper_selected .wpm_ui_helper_friendlyname ~ .wpm_ui_helper_packagename:before, .wpm_ui_helper_list .wpm_ui_helper_package_header.wpm_ui_helper_selected .wpm_ui_helper_friendlyname ~ .wpm_ui_helper_packagename:before {
+          content: "#"; }
+      .wpm_ui_helper_list .wpm_ui_helper_package.wpm_ui_helper_selected .wpm_ui_helper_action, .wpm_ui_helper_list .wpm_ui_helper_package_header.wpm_ui_helper_selected .wpm_ui_helper_action {
+        position: absolute;
+        top: 0;
+        margin: 0.5em;
+        right: 0; }
+      .wpm_ui_helper_list .wpm_ui_helper_package.wpm_ui_helper_selected .wpm_ui_helper_description, .wpm_ui_helper_list .wpm_ui_helper_package.wpm_ui_helper_selected .wpm_ui_helper_changelog, .wpm_ui_helper_list .wpm_ui_helper_package.wpm_ui_helper_selected .wpm_ui_helper_documentationlink, .wpm_ui_helper_list .wpm_ui_helper_package_header.wpm_ui_helper_selected .wpm_ui_helper_description, .wpm_ui_helper_list .wpm_ui_helper_package_header.wpm_ui_helper_selected .wpm_ui_helper_changelog, .wpm_ui_helper_list .wpm_ui_helper_package_header.wpm_ui_helper_selected .wpm_ui_helper_documentationlink {
+        display: block;
+        margin-top: 0.5em; }
+      .wpm_ui_helper_list .wpm_ui_helper_package.wpm_ui_helper_selected .wpm_ui_helper_packageversion:before, .wpm_ui_helper_list .wpm_ui_helper_package_header.wpm_ui_helper_selected .wpm_ui_helper_packageversion:before {
+        content: "Repository Version: "; }
+      .wpm_ui_helper_list .wpm_ui_helper_package.wpm_ui_helper_selected .wpm_ui_helper_installedversion:before, .wpm_ui_helper_list .wpm_ui_helper_package_header.wpm_ui_helper_selected .wpm_ui_helper_installedversion:before {
+        content: "Installed Version: "; }
+      .wpm_ui_helper_list .wpm_ui_helper_package.wpm_ui_helper_selected .wpm_ui_helper_packageversion, .wpm_ui_helper_list .wpm_ui_helper_package.wpm_ui_helper_selected .wpm_ui_helper_installedversion, .wpm_ui_helper_list .wpm_ui_helper_package_header.wpm_ui_helper_selected .wpm_ui_helper_packageversion, .wpm_ui_helper_list .wpm_ui_helper_package_header.wpm_ui_helper_selected .wpm_ui_helper_installedversion {
+        width: 30%;
+        float: right;
+        clear: right;
+        text-align: right;
+        font-size: 0.9em; }
+  .wpm_ui_helper_list .wpm_ui_helper_package_header {
+    background: rgba(100, 100, 150, 0.15);
+    font-weight: bold;
+    border-bottom: 1px solid grey; }
+</style>
+
+            </wpm-package>
         </div>
     </body>
 </html> 
