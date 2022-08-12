@@ -1,0 +1,9 @@
+{
+    "description": "FingerPrintJS",
+    "dependencies": [
+    ],
+    "assets": [],
+    "license": "MIT",
+    "version": "3.3.4",
+    "documentationLink": "https://github.com/fingerprintjs/fingerprintjs/"
+}
