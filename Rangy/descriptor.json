@@ -4,7 +4,7 @@
         "#requirejs"
     ],
     "assets": [],
-    "version": "1.3.0",
+    "version": "1.3.1",
     "license": "MIT",
     "documentationLink": "https://github.com/timdown/rangy/wiki"
 }
