@@ -774,6 +774,12 @@
                 <script src="WebstratePackageManagerUIHelper/wpm_ui_helper.js" type="disabled"></script>
                 <link href="WebstratePackageManagerUIHelper/scss/base.scss" rel="stylesheet" type="text/css"/>
             </wpm-package>
+            <wpm-package id="oscjs">
+                <script type="descriptor" src="oscjs/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/osc-js@2.3.2/lib/osc.min.js");
+                </script>
+            </wpm-package>
         </div>
     </body>
 </html> 

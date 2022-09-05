@@ -1,0 +1,9 @@
+{
+    "description": "osc.js",
+    "dependencies": [
+    ],
+    "assets": [],
+    "version": "2.3.2",
+    "license": "MIT",
+    "documentationLink": "https://github.com/adzialocha/osc-js/"
+}

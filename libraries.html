@@ -2107,6 +2107,24 @@ webstrate.on("loaded", function() {
 </style>
 
             </wpm-package>
+            <wpm-package id="oscjs">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "osc.js",
+    "dependencies": [
+    ],
+    "assets": [],
+    "version": "2.3.2",
+    "license": "MIT",
+    "documentationLink": "https://github.com/adzialocha/osc-js/"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/osc-js@2.3.2/lib/osc.min.js");
+                </script>
+            </wpm-package>
         </div>
     </body>
 </html> 
