@@ -366,17 +366,15 @@
             <wpm-package id="Uploader">
                 <script id="descriptor-script" type="descriptor">
 {
-    "description": "An upload helper",
-    "dependencies": [
-        "#cQuery"
-    ],
+    "description": "A small, fast chart for time series, lines, areas, ohlc & bars",
+    "dependencies": [],
     "assets": [],
-    "version": "1.0",
+    "version": "1.6.22",
     "changelog": {
-        "1.0": "Initial version"
+        "1.6.22": "Initial version"
     },
-    "license": "Apache 2.0",
-    "documentationLink": ""
+    "license": "MIT",
+    "documentationLink": "https://github.com/leeoniya/uPlot"
 }
 
 </script>
@@ -2123,6 +2121,26 @@ webstrate.on("loaded", function() {
 
                 <script type="disabled">
                     await wpm.requireExternal("https://cdn.jsdelivr.net/npm/osc-js@2.3.2/lib/osc.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="uPlot">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "A small, fast chart for time series, lines, areas, ohlc & bars",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.6.22",
+    "changelog": {
+        "1.6.22": "Initial version"
+    },
+    "license": "MIT",
+    "documentationLink": "https://github.com/leeoniya/uPlot"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/uplot@1.6.22/dist/uPlot.cjs.min.js");
                 </script>
             </wpm-package>
         </div>
