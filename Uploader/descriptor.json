@@ -1,0 +1,13 @@
+{
+  "description": "An upload helper",
+  "dependencies": [
+    "#cQuery"
+  ],
+  "assets": [],
+  "version": "1.0",
+  "changelog": {
+    "1.0": "Initial version"
+  },
+  "license": "Apache 2.0",
+  "documentationLink": ""
+}
