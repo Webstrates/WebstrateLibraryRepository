@@ -1,3 +1,5 @@
+/* global cQuery */
+
 class UberTracker {
     constructor(options) {
         const self = this;
@@ -216,6 +218,12 @@ class UberTracker {
         cQuery("body").on("click", (evt)=>{
             self.handleElementClick(evt);
         });
+        cQuery("body").on("pointerdown", (evt)=>{
+            self.handleElementDown(evt);
+        });
+        cQuery("body").on("pointerup", (evt)=>{
+            self.handleElementUp(evt);
+        });
 
         cQuery("body").on("input", (evt)=>{
             self.handleElementInput(evt);
@@ -318,8 +326,22 @@ class UberTracker {
     }
 
     handleElementClick(evt) {
-        this.countAction();
         this.pushEvent("click", {
+            x: evt.clientX,
+            y: evt.clientY
+        });
+    }
+
+    handleElementDown(evt) {
+        this.countAction();
+        this.pushEvent("pointerdown", {
+            x: evt.clientX,
+            y: evt.clientY
+        });
+    }
+
+    handleElementUp(evt) {
+        this.pushEvent("pointerup", {
             x: evt.clientX,
             y: evt.clientY
         });
@@ -421,6 +443,139 @@ class UberTracker {
     }
 
     async visualizeSubsession(subsession, options = {}) {
+        if(options.canvas === true) {
+            await this.visualizeSubsessionCanvas(subsession, options);
+        } else {
+            await this.visualizeSubsessionSvg(subsession, options);
+        }
+    }
+
+    async visualizeSubsessionSvg(subsession, options = {}) {
+        let events = await this.getEventsFromSubsession(subsession, options);
+
+        const draw = SVG().addTo("body").size(window.innerWidth, window.innerHeight);
+        draw.node.style.position = "fixed";
+        draw.node.style.top = "0px";
+        draw.node.style.left = "0px";
+        draw.node.style.width = window.innerWidth+"px";
+        draw.node.style.height = window.innerHeight+"px";
+
+        let lastPositionX = null;
+        let lastPositionY = null;
+        let timestampLastPosition = null;
+
+        let pointerIsDown = false;
+
+        const defaultDrawOptions = {
+            move: {
+                color: "black",
+                timeFactor: 2
+            },
+            drag:{
+                color: "gold"
+            },
+            click: {
+                color: "red",
+                size: 10
+            },
+            up: {
+                color: "blue",
+                size: 5
+            },
+            down: {
+                color: "green",
+                size: 7
+            }
+        }
+
+        Object.keys(defaultDrawOptions).forEach((key)=>{
+            let defaultOptions = defaultDrawOptions[key];
+
+            if(options[key] !== false) {
+                options[key] = Object.assign({}, defaultOptions, options[key]);
+            }
+        })
+
+        function drawPath(x, y, time, color, timeFactor) {
+            let arcRadius = 0;
+
+            if(timestampLastPosition != null) {
+                draw.line(lastPositionX, lastPositionY, x, y).stroke({width: 1, color: color});
+
+                let timeDiffSeconds = (time - timestampLastPosition) / 1000.0;
+                arcRadius += timeDiffSeconds * timeFactor;
+            }
+
+            let circle = draw.circle(arcRadius*2);
+            circle.center(x,y);
+            circle.fill({color: color}).stroke({color: color, width: 1});
+
+            console.log(circle, arcRadius);
+
+            lastPositionX = x;
+            lastPositionY = y;
+            timestampLastPosition = time;
+        }
+
+        function drawCircle(x,y, color, size) {
+            let circle = draw.circle(size*2);
+            circle.center(x,y);
+            circle.fill("none").stroke({width: 1, color: color});
+        }
+
+        //Draw pointer path
+        events.forEach((event)=>{
+            switch(event.type) {
+                case "pointermove":
+                    if(options.move !== false) {
+                        drawPath(event.data.x, event.data.y, event.time, pointerIsDown?options.drag.color:options.move.color, options.move.timeFactor);
+                    }
+
+                    break;
+
+                case "click":
+                    if(options.move !== false) {
+                        drawPath(event.data.x, event.data.y, event.time, options.move.color, options.move.timeFactor);
+                    }
+
+                    if(options.click !== false) {
+                        drawCircle(event.data.x, event.data.y, options.click.color, options.click.size);
+                    }
+
+                    break;
+
+                case "pointerdown":
+                    if(options.move !== false) {
+                        drawPath(event.data.x, event.data.y, event.time, options.move.color, options.move.timeFactor);
+                    }
+
+                    if(options.down !== false) {
+                        drawCircle(event.data.x, event.data.y, options.down.color, options.down.size);
+                    }
+
+                    pointerIsDown = true;
+
+                    break;
+
+                case "pointerup":
+                    if(options.move !== false) {
+                        drawPath(event.data.x, event.data.y, event.time, pointerIsDown?options.drag.color:options.move.color, options.move.timeFactor);
+                    }
+
+                    if(options.up !== false) {
+                        drawCircle(event.data.x, event.data.y, options.up.color, options.up.size);
+                    }
+
+                    pointerIsDown = false;
+
+                    break;
+
+                default:
+            }
+        });
+    }
+
+    async visualizeSubsessionCanvas(subsession, options = {}) {
         let events = await this.getEventsFromSubsession(subsession, options);
 
         let canvas = document.createElement("canvas");
@@ -440,9 +595,41 @@ class UberTracker {
         let lastPositionY = null;
         let timestampLastPosition = null;
 
-        function drawMovement(x, y, time) {
-            ctx.fillStyle = "black";
-            ctx.strokeStyle = "grey";
+        let pointerIsDown = false;
+
+        const defaultDrawOptions = {
+            move: {
+                color: "black",
+                timeFactor: 2
+            },
+            drag:{
+                color: "gold"
+            },
+            click: {
+                color: "red",
+                size: 10
+            },
+            up: {
+                color: "blue",
+                size: 5
+            },
+            down: {
+                color: "green",
+                size: 7
+            }
+        }
+
+        Object.keys(defaultDrawOptions).forEach((key)=>{
+            let defaultOptions = defaultDrawOptions[key];
+
+            if(options[key] !== false) {
+                options[key] = Object.assign({}, defaultOptions, options[key]);
+            }
+        })
+
+        function drawPath(x, y, time, color, timeFactor) {
+            ctx.fillStyle = color;
+            ctx.strokeStyle = color;
 
             let arcRadius = 0;
 
@@ -458,7 +645,7 @@ class UberTracker {
                 ctx.stroke();
                 let timeDiffSeconds = (time - timestampLastPosition) / 1000.0;
 
-                arcRadius += timeDiffSeconds * 2.0;
+                arcRadius += timeDiffSeconds * timeFactor;
             }
 
             ctx.beginPath();
@@ -471,10 +658,10 @@ class UberTracker {
             timestampLastPosition = time;
         }
 
-        function drawClick(x, y, time) {
-            ctx.strokeStyle = "red";
+        function drawCircle(x,y, color, size) {
+            ctx.strokeStyle = color;
             ctx.beginPath();
-            ctx.arc(x, y, 10, 0, 2*Math.PI);
+            ctx.arc(x, y, size, 0, 2*Math.PI);
             ctx.closePath();
             ctx.stroke();
         }
@@ -483,15 +670,46 @@ class UberTracker {
         events.forEach((event)=>{
             switch(event.type) {
                 case "pointermove":
-
-                    drawMovement(event.data.x, event.data.y, event.time);
+                    if(options.move !== false) {
+                        drawPath(event.data.x, event.data.y, event.time, pointerIsDown?options.drag.color:options.move.color, options.move.timeFactor);
+                    }
 
                     break;
 
                 case "click":
-                    drawMovement(event.data.x, event.data.y, event.time);
+                    if(options.move !== false) {
+                        drawPath(event.data.x, event.data.y, event.time, options.move.color, options.move.timeFactor);
+                    }
 
-                    drawClick(event.data.x, event.data.y);
+                    if(options.click !== false) {
+                        drawCircle(event.data.x, event.data.y, options.click.color, options.click.size);
+                    }
+
+                    break;
+
+                case "pointerdown":
+                    if(options.move !== false) {
+                        drawPath(event.data.x, event.data.y, event.time, options.move.color, options.move.timeFactor);
+                    }
+
+                    if(options.down !== false) {
+                        drawCircle(event.data.x, event.data.y, options.down.color, options.down.size);
+                    }
+
+                    pointerIsDown = true;
+
+                    break;
+
+                case "pointerup":
+                    if(options.move !== false) {
+                        drawPath(event.data.x, event.data.y, event.time, pointerIsDown?options.drag.color:options.move.color, options.move.timeFactor);
+                    }
+
+                    if(options.up !== false) {
+                        drawCircle(event.data.x, event.data.y, options.up.color, options.up.size);
+                    }
+
+                    pointerIsDown = false;
 
                     break;
 

@@ -1,0 +1,10 @@
+{
+    "description": "The lightweight library for manipulating and animating SVG.",
+    "dependencies": [],
+    "assets": [],
+    "version": "3.1.2",
+    "license": "MIT",
+    "changelog": {
+        "3.1.2": "Initial version"
+    }
+}
