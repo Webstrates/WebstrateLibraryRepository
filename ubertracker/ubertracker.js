@@ -500,7 +500,7 @@ class UberTracker {
             let arcRadius = 0;
 
             if(timestampLastPosition != null) {
-                draw.line(lastPositionX, lastPositionY, x, y).stroke({width: 1, color: color});
+                draw.line(lastPositionX, lastPositionY, x, y).fill({color: color}).stroke({width: 1, color: color});
 
                 let timeDiffSeconds = (time - timestampLastPosition) / 1000.0;
                 arcRadius += timeDiffSeconds * timeFactor;
@@ -509,8 +509,6 @@ class UberTracker {
             let circle = draw.circle(arcRadius*2);
             circle.center(x,y);
             circle.fill({color: color}).stroke({color: color, width: 1});
-
-            console.log(circle, arcRadius);
 
             lastPositionX = x;
             lastPositionY = y;
