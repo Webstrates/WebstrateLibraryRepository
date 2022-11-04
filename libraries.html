@@ -83,9 +83,10 @@ class UberTracker {
         this.actionListeners = [];
         this.apmEvents = [];
         this.events = [];
-        this.readyResolve = null;
-        this.readyPromise = new Promise((resolve)=>{
-            self.readyResolve = resolve;
+
+        this.clientDataResolve = null;
+        this.clientDataPromise = new Promise((resolve)=>{
+            self.clientDataResolve = resolve;
         });
 
         this.lastPointerMove = 0;
@@ -93,22 +94,28 @@ class UberTracker {
         this.sessionData = null;
         this.clientData = null;
 
+        this.getClientSession().then((clientData)=>{
+            self.clientData = clientData;
+
+            console.log("Got client data:", self.clientData);
+            self.clientDataResolve();
+        });
+    }
+
+    async startTracking() {
+        const self = this;
+
         console.log("Starting UberTracker...");
 
         this.setupEventListeners();
         this.setupSpeedTrackers();
 
-        this.getClientSession().then((clientData)=>{
-            self.clientData = clientData;
+        await this.clientDataPromise;
 
-            console.log("Got client data:", self.clientData);
-
-            self.startTrackingSession().then((sessionData)=>{
-                self.sessionData = sessionData;
-                self.startEventPusher();
-                self.readyResolve();
-                console.log("UberTracker ready:", sessionData);
-            });
+        return self.startTrackingSession().then((sessionData)=>{
+            self.sessionData = sessionData;
+            self.startEventPusher();
+            console.log("UberTracker ready:", sessionData);
         });
     }
 
@@ -167,10 +174,12 @@ class UberTracker {
     }
 
     async ready() {
-        return await this.readyPromise;
+        return await this.clientDataPromise;
     }
 
     async getSubsessions() {
+        await this.clientDataPromise;
+
         return this.doFetch(this.options.trackerUrl+"?cmd=getSubsessions", {
             session: this.clientData.session
         });
@@ -214,6 +223,12 @@ class UberTracker {
         }
 
         return this.doFetch(this.options.trackerUrl+"?cmd=getEvents", data);
+    }
+
+    async getStatistics(subsession) {
+        return this.doFetch(this.options.trackerUrl+"?cmd=getStatistics", {
+            subsession: subsession
+        });
     }
 
     async getClientSession() {
