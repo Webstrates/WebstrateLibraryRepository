@@ -23,9 +23,7 @@
             </wpm-package>
             <wpm-package id="UberTracker">
                 <script type="descriptor" src="ubertracker/descriptor.json"></script>
-                <script type="disabled">
-                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/ubertracker/ubertracker.js");
-                </script>
+                <script type="disabled" src="ubertracker/ubertracker.js"></script></script>>
             </wpm-package>
             <wpm-package id="CaviDraggableHTML5">
                 <script type="descriptor" src="CaviDraggableHTML5/descriptor.json"></script>
@@ -790,6 +788,12 @@
                 <script type="descriptor" src="uPlot/descriptor.json"></script>
                 <script type="disabled">
                     await wpm.requireExternal("https://cdn.jsdelivr.net/npm/uplot@1.6.22/dist/uPlot.iife.min.js");
+                </script>
+            </wpm-package>
+            <wpm-package id="chrono">
+                <script type="descriptor" src="chrono/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://cdn.jsdelivr.net/npm/chrono-node@1.4.8/dist/chrono.min.js");
                 </script>
             </wpm-package>
         </div>

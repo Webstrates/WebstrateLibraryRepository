@@ -1,0 +1,11 @@
+{
+    "description": "A natural language date parser in Javascript, designed for extracting date information from any given text.",
+    "dependencies": [],
+    "assets": [],
+    "version": "1.4.8",
+    "changelog": {
+        "1.4.8": "Initial version"
+    },
+    "documentationLink": "",
+    "license": "MIT"
+}
