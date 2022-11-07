@@ -290,8 +290,8 @@ class UberTracker {
 
     handleMove(evt) {
         let pos = {
-            x: evt.clientX,
-            y: evt.clientY
+            x: evt.pageX,
+            y: evt.pageY
         };
 
         let now = Date.now();
@@ -327,46 +327,46 @@ class UberTracker {
 
     handleElementClick(evt) {
         this.pushEvent("click", {
-            x: evt.clientX,
-            y: evt.clientY
+            x: evt.pageX,
+            y: evt.pageY
         });
     }
 
     handleElementDown(evt) {
         this.countAction();
         this.pushEvent("pointerdown", {
-            x: evt.clientX,
-            y: evt.clientY
+            x: evt.pageX,
+            y: evt.pageY
         });
     }
 
     handleElementUp(evt) {
         this.pushEvent("pointerup", {
-            x: evt.clientX,
-            y: evt.clientY
+            x: evt.pageX,
+            y: evt.pageY
         });
     }
 
     handleTaggedClick(evt, tags) {
         this.pushEvent("clicktagged", {
-            x: evt.clientX,
-            y: evt.clientY,
+            x: evt.pageX,
+            y: evt.pageY,
             tags: tags
         });
     }
 
     handleTaggedDown(evt, tags) {
         this.pushEvent("pointerdowntagged", {
-            x: evt.clientX,
-            y: evt.clientY,
+            x: evt.pageX,
+            y: evt.pageY,
             tags: tags
         });
     }
 
     handleTaggedUp(evt, tags) {
         this.pushEvent("pointeruptagged", {
-            x: evt.clientX,
-            y: evt.clientY,
+            x: evt.pageX,
+            y: evt.pageY,
             tags: tags
         });
     }
@@ -469,10 +469,12 @@ class UberTracker {
         const defaultDrawOptions = {
             move: {
                 color: "black",
-                timeFactor: 2
+                timeFactor: 2,
+                "strokeDash": null
             },
             drag:{
-                color: "gold"
+                color: "black",
+                "strokeDash": null
             },
             click: {
                 color: "red",
@@ -496,11 +498,15 @@ class UberTracker {
             }
         })
 
-        function drawPath(x, y, time, color, timeFactor) {
+        function drawPath(x, y, time, color, timeFactor, strokeDash) {
             let arcRadius = 0;
 
             if(timestampLastPosition != null) {
-                draw.line(lastPositionX, lastPositionY, x, y).fill({color: color}).stroke({width: 1, color: color});
+                let line = draw.line(lastPositionX, lastPositionY, x, y).fill({color: color}).stroke({width: 1, color: color});
+
+                if(strokeDash != null) {
+                    line.node.setAttribute("stroke-dasharray", strokeDash);
+                }
 
                 let timeDiffSeconds = (time - timestampLastPosition) / 1000.0;
                 arcRadius += timeDiffSeconds * timeFactor;
@@ -526,14 +532,14 @@ class UberTracker {
             switch(event.type) {
                 case "pointermove":
                     if(options.move !== false) {
-                        drawPath(event.data.x, event.data.y, event.time, pointerIsDown?options.drag.color:options.move.color, options.move.timeFactor);
+                        drawPath(event.data.x, event.data.y, event.time, pointerIsDown?options.drag.color:options.move.color, options.move.timeFactor, pointerIsDown?options.drag.strokeDash:options.move.strokeDash);
                     }
 
                     break;
 
                 case "click":
                     if(options.move !== false) {
-                        drawPath(event.data.x, event.data.y, event.time, options.move.color, options.move.timeFactor);
+                        drawPath(event.data.x, event.data.y, event.time, options.move.color, options.move.timeFactor, options.move.strokeDash);
                     }
 
                     if(options.click !== false) {
@@ -557,7 +563,7 @@ class UberTracker {
 
                 case "pointerup":
                     if(options.move !== false) {
-                        drawPath(event.data.x, event.data.y, event.time, pointerIsDown?options.drag.color:options.move.color, options.move.timeFactor);
+                        drawPath(event.data.x, event.data.y, event.time, pointerIsDown?options.drag.color:options.move.color, options.move.timeFactor,  pointerIsDown?options.drag.strokeDash:options.move.strokeDash);
                     }
 
                     if(options.up !== false) {
