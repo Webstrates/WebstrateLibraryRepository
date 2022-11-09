@@ -471,7 +471,7 @@ class UberTracker {
             },
             drag:{
                 color: "black",
-                "strokeDash": null
+                "strokeDash": "4"
             },
             click: {
                 color: "red",
