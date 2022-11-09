@@ -115,11 +115,14 @@ class UberTracker {
         return await this.clientDataPromise;
     }
 
-    async getSubsessions() {
-        await this.clientDataPromise;
-
+    async getSubsessions(session=false) {
+        if (!session){
+            await this.clientDataPromise;
+            session = this.clientData.session;
+        }
+            
         return this.doFetch(this.options.trackerUrl+"?cmd=getSubsessions", {
-            session: this.clientData.session
+            session: session
         });
     }
 
