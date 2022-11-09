@@ -169,6 +169,12 @@ class UberTracker {
         });
     }
 
+    async generateCrossDomainKey(domain) {
+        return this.doFetch(this.options.trackerUrl+"?cmd=generateCrossDomainKey", {
+            domain: domain
+        });
+    }
+
     async getClientSession(utrack = null) {
         return this.doFetch(this.options.trackerUrl+"?cmd=getClientSession", {
             key: utrack
