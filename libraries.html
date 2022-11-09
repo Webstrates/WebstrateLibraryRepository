@@ -512,17 +512,17 @@ class UberTracker {
     async visualizeSubsession(subsession, options = {}) {
         let events = await this.getEventsFromSubsession(subsession, options);
 
-        let maxX = 0;
-        let maxY = 0;
+        let maxWidth = 0;
+        let maxHeight = 0;
 
         events.forEach((event)=>{
-            if(event?.data?.x != null) {
-                maxX = Math.max(maxX, event.data.x);
-                maxY = Math.max(maxY, event.data.y);
+            if(event.type === "windowresize") {
+                maxWidth = Math.max(maxWidth, event.data.width);
+                maxHeight = Math.max(maxHeight, event.data.height);
             }
         });
 
-        const draw = SVG().size(maxX+10, maxY+10);
+        const draw = SVG().size(maxWidth, maxHeight);
 
         let lastPositionX = null;
         let lastPositionY = null;
