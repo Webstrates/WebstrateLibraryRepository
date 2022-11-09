@@ -96,7 +96,10 @@ class UberTracker {
         this.sessionData = null;
         this.clientData = null;
 
-        this.getClientSession().then((clientData)=>{
+        let params = new URLSearchParams(location.search);
+        let utrack = params.get("_utrack");
+
+        this.getClientSession(utrack).then((clientData)=>{
             self.clientData = clientData;
 
             console.log("Got client data:", self.clientData);
@@ -233,8 +236,10 @@ class UberTracker {
         });
     }
 
-    async getClientSession() {
-        return this.doFetch(this.options.trackerUrl+"?cmd=getClientSession");
+    async getClientSession(utrack = null) {
+        return this.doFetch(this.options.trackerUrl+"?cmd=getClientSession", {
+            key: utrack
+        });
     }
 
     async startTrackingSession() {
