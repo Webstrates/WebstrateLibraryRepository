@@ -477,9 +477,20 @@ class UberTracker {
             actions++;
         });
 
+        let lastAPM = -1;
+        let lastPointerSpeed = -1;
+
         setInterval(()=>{
             let apm = (actions / (self.options.apmUpdateInterval / 1000.0)) * 60.0;
             actions = 0;
+
+            if(apm === 0 && lastAPM === 0) {
+                //Dont send APM, if we already said 0, and new value is 0
+                return;
+            }
+
+            lastAPM = apm;
+
             self.pushEvent("actionsperminute", {
                 apm: apm
             });
@@ -504,6 +515,13 @@ class UberTracker {
 
         setInterval(()=>{
             let speed = totalDistance / (self.options.speedUpdateInterval / 1000.0);
+
+            if(speed === 0 && lastPointerSpeed === 0) {
+                //Dont send APM, if we already said 0, and new value is 0
+                return;
+            }
+
+            lastPointerSpeed = speed;
 
             self.pushEvent("pointerspeed", {
                 speed: speed
