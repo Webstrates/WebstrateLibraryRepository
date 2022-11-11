@@ -143,6 +143,18 @@ class UberTracker {
             }
         }
 
+        if(options.tags != null) {
+            if(Array.isArray(options.tags)) {
+                data.tags = options.tags.join(",");
+            } else {
+                if(typeof options.tags === "string") {
+                    data.tags = options.tags;
+                } else {
+                    console.warn("Unknown options.tags variant:", options.tags);
+                }
+            }
+        }
+
         if(options.start != null) {
             if(typeof options.start === "number") {
                 data.start = options.start;
