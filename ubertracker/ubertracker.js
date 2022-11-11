@@ -251,26 +251,6 @@ class UberTracker {
             self.handleElementKeydown(evt);
         });
 
-        cQuery("body").liveQuery("[data-tag]", {
-            added: (elm)=>{
-                let tags = self.getTags(elm);
-                cQuery(elm).on("click", (evt)=>{
-                    self.handleTaggedClick(evt, tags);
-                });
-                cQuery(elm).on("pointerdown", (evt)=>{
-                    self.handleTaggedDown(evt, tags);
-                });
-                cQuery(elm).on("pointerup", (evt)=>{
-                    self.handleTaggedUp(evt, tags);
-                });
-            },
-            removed: (elm)=>{
-                cQuery(elm).off("click");
-                cQuery(elm).off("pointerdown");
-                cQuery(elm).off("pointerup");
-            }
-        });
-
         cQuery(window).on("resize", (evt)=>{
             self.handleWindowResize(evt);
         });
@@ -282,10 +262,33 @@ class UberTracker {
         });
     }
 
-    getTags(taggedElm) {
-        let tagsAttr = taggedElm.getAttribute("data-tag");
+    getTags(element) {
+        let allTags = new Set();
 
-        return tagsAttr.split(" ");
+        if(element.getAttribute != null) {
+            let tagAttr = element.getAttribute("data-tag");
+
+            if (tagAttr != null) {
+                let tagsOnElement = tagAttr.split(" ");
+                tagsOnElement = tagsOnElement.filter((tag) => {
+                    return tag.trim().length > 0;
+                });
+
+                tagsOnElement.forEach((tag)=>{
+                    allTags.add(tag);
+                })
+            }
+        }
+
+        if(element.parentNode != null) {
+            let parentTags = this.getTags(element.parentNode);
+
+            parentTags.forEach((tag)=>{
+                allTags.add(tag);
+            })
+        }
+
+        return Array.from(allTags);
     }
 
     countAction() {
@@ -322,27 +325,31 @@ class UberTracker {
 
     handleElementKeyup(evt) {
         this.pushEvent("keyup", {
-            keyCode: evt.keyCode
+            keyCode: evt.keyCode,
+            tags: this.getTags(evt.target)
         });
     }
 
     handleElementKeydown(evt) {
         this.pushEvent("keydown", {
-            keyCode: evt.keyCode
+            keyCode: evt.keyCode,
+            tags: this.getTags(evt.target)
         });
     }
     handleElementInput(evt) {
         this.countAction();
         this.pushEvent("input", {
             data: evt.data,
-            value: evt.target.value
+            value: evt.target.value,
+            tags: this.getTags(evt.target)
         });
     }
 
     handleElementClick(evt) {
         this.pushEvent("click", {
             x: evt.pageX,
-            y: evt.pageY
+            y: evt.pageY,
+            tags: this.getTags(evt.target)
         });
     }
 
@@ -350,55 +357,38 @@ class UberTracker {
         this.countAction();
         this.pushEvent("pointerdown", {
             x: evt.pageX,
-            y: evt.pageY
+            y: evt.pageY,
+            tags: this.getTags(evt.target)
         });
     }
 
     handleElementUp(evt) {
         this.pushEvent("pointerup", {
             x: evt.pageX,
-            y: evt.pageY
-        });
-    }
-
-    handleTaggedClick(evt, tags) {
-        this.pushEvent("clicktagged", {
-            x: evt.pageX,
             y: evt.pageY,
-            tags: tags
+            tags: this.getTags(evt.target)
         });
     }
-
-    handleTaggedDown(evt, tags) {
-        this.pushEvent("pointerdowntagged", {
-            x: evt.pageX,
-            y: evt.pageY,
-            tags: tags
-        });
-    }
-
-    handleTaggedUp(evt, tags) {
-        this.pushEvent("pointeruptagged", {
-            x: evt.pageX,
-            y: evt.pageY,
-            tags: tags
-        });
-    }
-
     handleWindowFocus(evt) {
-        this.pushEvent("windowfocus", {});
+        this.pushEvent("windowfocus", {
+        });
     }
 
     handleWindowBlur(evt) {
-        this.pushEvent("windowblur", {});
+        this.pushEvent("windowblur", {
+        });
     }
 
     handleElementFocus(evt) {
-        this.pushEvent("elementfocus", {});
+        this.pushEvent("elementfocus", {
+            tags: this.getTags(evt.target)
+        });
     }
 
     handleElementBlur(evt) {
-        this.pushEvent("elementblur", {});
+        this.pushEvent("elementblur", {
+            tags: this.getTags(evt.target)
+        });
     }
 
     handleWindowResize(evt) {
