@@ -67,7 +67,8 @@ class UberTracker {
     async doFetch(url, data = null, json = true) {
         let fetchOptions = {
             "method": "GET",
-            "credentials": "include"
+            "credentials": "include",
+            "keepalive": true
         }
 
         if(data != null) {
@@ -120,7 +121,7 @@ class UberTracker {
             await this.clientDataPromise;
             session = this.clientData.session;
         }
-            
+
         return this.doFetch(this.options.trackerUrl+"?cmd=getSubsessions", {
             session: session
         });
@@ -228,48 +229,57 @@ class UberTracker {
 
         console.log("Setting up event listeners...");
 
-        cQuery(window).on("focus", (evt)=>{
+        window.addEventListener("focus", (evt)=>{
             self.handleWindowFocus(evt);
         });
-        cQuery(window).on("blur", (evt)=>{
+        window.addEventListener("blur", (evt)=>{
             self.handleWindowBlur(evt);
         });
 
-        cQuery("body").on("focusin", (evt)=>{
+        document.body.addEventListener("focusin", (evt)=>{
             self.handleElementFocus(evt)
-        });
-        cQuery("body").on("focusout", (evt)=>{
+        }, true);
+        document.body.addEventListener("focusout", (evt)=>{
             self.handleElementBlur(evt)
-        });
-        cQuery("body").on("click", (evt)=>{
+        }, true);
+        document.body.addEventListener("click", (evt)=>{
             self.handleElementClick(evt);
-        });
-        cQuery("body").on("pointerdown", (evt)=>{
+        }, true);
+        document.body.addEventListener("pointerdown", (evt)=>{
             self.handleElementDown(evt);
-        });
-        cQuery("body").on("pointerup", (evt)=>{
+        }, true);
+        document.body.addEventListener("pointerup", (evt)=>{
             self.handleElementUp(evt);
-        });
+        }, true);
 
-        cQuery("body").on("input", (evt)=>{
+        document.body.addEventListener("input", (evt)=>{
             self.handleElementInput(evt);
-        });
+        }, true);
 
-        cQuery("body").on("keyup", (evt)=>{
+        document.body.addEventListener("keyup", (evt)=>{
             self.handleElementKeyup(evt);
-        });
+        }, true);
 
-        cQuery("body").on("keydown", (evt)=>{
+        document.body.addEventListener("keydown", (evt)=>{
             self.handleElementKeydown(evt);
+        }, true);
+
+        document.body.addEventListener("pointerover", (evt)=>{
+            self.handlePointerOver(evt);
+        }, true);
+
+        window.addEventListener("beforeunload", (evt)=>{
+            this.postEvents().then(()=>{
+            });
         });
 
-        cQuery(window).on("resize", (evt)=>{
+        window.addEventListener("resize", (evt)=>{
             self.handleWindowResize(evt);
         });
         //Send fake resize event, to save initial size
         self.handleWindowResize({});
 
-        cQuery(window).on("pointermove", (evt)=>{
+        window.addEventListener("pointermove", (evt)=>{
             self.handleMove(evt);
         });
     }
@@ -315,6 +325,16 @@ class UberTracker {
             "time": Date.now(),
             "data": data
         });
+    }
+
+    handlePointerOver(evt) {
+        let tags = this.getTags(evt.target);
+
+        if(tags.length > 0) {
+            this.pushEvent("pointerover", {
+                tags
+            });
+        }
     }
 
     handleMove(evt) {
