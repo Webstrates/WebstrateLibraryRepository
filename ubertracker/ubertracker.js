@@ -127,7 +127,7 @@ class UberTracker {
         });
     }
 
-    async getEventsFromSubsession(subsession, options) {
+    async getEventsFromSubsession(subsession, options = {}) {
         let data = {
             subsession: subsession
         }
