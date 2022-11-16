@@ -16,7 +16,6 @@ class UberTracker {
 
         this.moveListeners = [];
         this.actionListeners = [];
-        this.apmEvents = [];
         this.events = [];
 
         this.clientDataResolve = null;
@@ -28,6 +27,8 @@ class UberTracker {
 
         this.sessionData = null;
         this.clientData = null;
+
+        this.currentlyHoveredTaggedElements = new Set();
 
         let params = new URLSearchParams(location.search);
         let utrack = params.get("_utrack");
@@ -264,9 +265,13 @@ class UberTracker {
             self.handleElementKeydown(evt);
         }, true);
 
-        document.body.addEventListener("pointerover", (evt)=>{
+        window.addEventListener("pointerover", (evt)=>{
             self.handlePointerOver(evt);
-        }, true);
+        }, false);
+
+        document.addEventListener("pointerleave", (evt)=>{
+            self.updateHoveredElements([]);
+        }, false);
 
         window.addEventListener("beforeunload", (evt)=>{
             this.postEvents().then(()=>{
@@ -284,7 +289,7 @@ class UberTracker {
         });
     }
 
-    getTags(element) {
+    getTags(element, skipParents=false) {
         let allTags = new Set();
 
         if(element.getAttribute != null) {
@@ -302,7 +307,7 @@ class UberTracker {
             }
         }
 
-        if(element.parentNode != null) {
+        if(element.parentNode != null && !skipParents) {
             let parentTags = this.getTags(element.parentNode);
 
             parentTags.forEach((tag)=>{
@@ -320,21 +325,76 @@ class UberTracker {
     }
 
     pushEvent(type, data) {
-        this.events.push({
+        let evt = {
             "type": type,
             "time": Date.now(),
             "data": data
-        });
+        };
+
+        this.events.push(evt);
+    }
+
+    findTaggedParents(elm) {
+        let taggedElements = [];
+
+        let tags = this.getTags(elm, true);
+
+        if(tags.length > 0) {
+            taggedElements.push(elm);
+        }
+
+        if(elm.parentElement != null) {
+            let parentTaggedElements = this.findTaggedParents(elm.parentElement);
+
+            parentTaggedElements.forEach((parent)=>{
+                taggedElements.push(parent);
+            })
+        }
+
+        return taggedElements;
     }
 
     handlePointerOver(evt) {
-        let tags = this.getTags(evt.target);
+        let taggedElementsHovered = this.findTaggedParents(evt.target);
 
-        if(tags.length > 0) {
-            this.pushEvent("pointerover", {
-                tags
-            });
-        }
+        this.updateHoveredElements(taggedElementsHovered);
+    }
+
+    updateHoveredElements(taggedElementsHovered) {
+        const self = this;
+
+        this.currentlyHoveredTaggedElements.forEach((elm)=>{
+            elm.stillHovered = false;
+        });
+
+        taggedElementsHovered.forEach((elm)=>{
+            elm.stillHovered = true;
+            if(!self.currentlyHoveredTaggedElements.has(elm)) {
+                self.currentlyHoveredTaggedElements.add(elm);
+                let tags = self.getTags(elm);
+                self.pushEvent("pointerover", {
+                    tags,
+                    elementTags: self.getTags(elm, true)
+                });
+            }
+        });
+
+        let deleteElements = [];
+
+        this.currentlyHoveredTaggedElements.forEach((elm)=>{
+            if(!elm.stillHovered) {
+                deleteElements.push(elm);
+                let tags = self.getTags(elm);
+                self.pushEvent("pointerout", {
+                    tags,
+                    elementTags: self.getTags(elm, true)
+                });
+            }
+        });
+
+        deleteElements.forEach((elm)=>{
+            this.currentlyHoveredTaggedElements.delete(elm);
+        });
     }
 
     handleMove(evt) {
@@ -358,6 +418,7 @@ class UberTracker {
     handleElementKeyup(evt) {
         this.pushEvent("keyup", {
             keyCode: evt.keyCode,
+            elementTags: this.getTags(evt.target, true),
             tags: this.getTags(evt.target)
         });
     }
@@ -365,6 +426,7 @@ class UberTracker {
     handleElementKeydown(evt) {
         this.pushEvent("keydown", {
             keyCode: evt.keyCode,
+            elementTags: this.getTags(evt.target, true),
             tags: this.getTags(evt.target)
         });
     }
@@ -373,6 +435,7 @@ class UberTracker {
         this.pushEvent("input", {
             data: evt.data,
             value: evt.target.value,
+            elementTags: this.getTags(evt.target, true),
             tags: this.getTags(evt.target)
         });
     }
@@ -381,6 +444,7 @@ class UberTracker {
         this.pushEvent("click", {
             x: evt.pageX,
             y: evt.pageY,
+            elementTags: this.getTags(evt.target, true),
             tags: this.getTags(evt.target)
         });
     }
@@ -390,6 +454,7 @@ class UberTracker {
         this.pushEvent("pointerdown", {
             x: evt.pageX,
             y: evt.pageY,
+            elementTags: this.getTags(evt.target, true),
             tags: this.getTags(evt.target)
         });
     }
@@ -398,6 +463,7 @@ class UberTracker {
         this.pushEvent("pointerup", {
             x: evt.pageX,
             y: evt.pageY,
+            elementTags: this.getTags(evt.target, true),
             tags: this.getTags(evt.target)
         });
     }
@@ -413,12 +479,14 @@ class UberTracker {
 
     handleElementFocus(evt) {
         this.pushEvent("elementfocus", {
+            elementTags: this.getTags(evt.target, true),
             tags: this.getTags(evt.target)
         });
     }
 
     handleElementBlur(evt) {
         this.pushEvent("elementblur", {
+            elementTags: this.getTags(evt.target, true),
             tags: this.getTags(evt.target)
         });
     }
