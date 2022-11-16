@@ -1,0 +1,9 @@
+{
+    "description": "CSS Selector Generator",
+    "dependencies": [
+    ],
+    "assets": [],
+    "license": "MIT",
+    "version": "2.1.0",
+    "documentationLink": "https://github.com/antonmedv/finder"
+}

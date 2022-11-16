@@ -802,6 +802,12 @@
                     await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/svg.js/3.1.2/svg.min.js");
                 </script>
             </wpm-package>
+            <wpm-package id="finder">
+                <script type="descriptor" src="finder/descriptor.json"></script>
+                <script type="disabled">
+                    window.finder = (await import("https://medv.io/finder/finder.js")).finder;
+                </script>
+            </wpm-package>
         </div>
     </body>
 </html> 

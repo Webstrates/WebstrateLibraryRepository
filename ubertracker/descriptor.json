@@ -1,6 +1,6 @@
 {
     "description": "UberTracker",
-    "dependencies": ["cQuery", "chrono", "svgjs"],
+    "dependencies": ["cQuery", "chrono", "svgjs", "finder"],
     "assets": [],
     "version": "1.0",
     "license": "Apache 2.0",
