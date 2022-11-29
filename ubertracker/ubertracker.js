@@ -289,6 +289,36 @@ class UberTracker {
         window.addEventListener("pointermove", (evt)=>{
             self.handleMove(evt);
         });
+
+        let tagVisibleObserver = new IntersectionObserver((entries)=>{
+            entries.forEach((entry)=>{
+                if(entry.isIntersecting) {
+                    //Visible
+                    self.pushEvent("taggedvisible", {}, entry.target);
+                } else {
+                    //Not visible
+
+                    if(entry.target.intersectionJustAdded) {
+                        entry.target.intersectionJustAdded = false;
+                    } else {
+                        self.pushEvent("taggedinvisible", {}, entry.target);
+                    }
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+
+        cQuery("body").liveQuery("[data-tag]", {
+            added: (elm)=> {
+                elm.intersectionJustAdded = true;
+                tagVisibleObserver.observe(elm);
+            },
+            removed: (elm) => {
+                delete elm.intersectionJustAdded;
+                tagVisibleObserver.unobserve(elm);
+            }
+        })
     }
 
     getTags(element, skipParents=false) {
@@ -326,12 +356,18 @@ class UberTracker {
         });
     }
 
-    pushEvent(type, data) {
+    pushEvent(type, data, elm = null) {
         let evt = {
             "type": type,
             "time": Date.now(),
             "data": data
         };
+
+        if(elm != null) {
+            evt.data.elementTags = this.getTags(elm, true);
+            evt.data.tags = this.getTags(elm, false);
+            evt.data.path = finder(elm);
+        }
 
         this.events.push(evt);
     }
@@ -373,12 +409,7 @@ class UberTracker {
             elm.stillHovered = true;
             if(!self.currentlyHoveredTaggedElements.has(elm)) {
                 self.currentlyHoveredTaggedElements.add(elm);
-                let tags = self.getTags(elm);
-                self.pushEvent("pointerover", {
-                    tags,
-                    elementTags: self.getTags(elm, true),
-                    path: finder(elm)
-                });
+                self.pushEvent("pointerover", {}, elm);
             }
         });
 
@@ -387,12 +418,7 @@ class UberTracker {
         this.currentlyHoveredTaggedElements.forEach((elm)=>{
             if(!elm.stillHovered) {
                 deleteElements.push(elm);
-                let tags = self.getTags(elm);
-                self.pushEvent("pointerout", {
-                    tags,
-                    elementTags: self.getTags(elm, true),
-                    path: finder(elm)
-                });
+                self.pushEvent("pointerout", {}, elm);
             }
         });
 
@@ -422,50 +448,35 @@ class UberTracker {
     handleElementKeyup(evt) {
         this.pushEvent("keyup", {
             keyCode: evt.keyCode,
-            elementTags: this.getTags(evt.target, true),
-            tags: this.getTags(evt.target),
-            path: finder(evt.target)
-        });
+        }, evt.target);
     }
 
     handleElementKeydown(evt) {
         this.pushEvent("keydown", {
             keyCode: evt.keyCode,
-            elementTags: this.getTags(evt.target, true),
-            tags: this.getTags(evt.target),
-            path: finder(evt.target)
-        });
+        }, evt.target);
     }
     handleElementInput(evt) {
         this.countAction();
         this.pushEvent("input", {
             data: evt.data,
             value: evt.target.value,
-            elementTags: this.getTags(evt.target, true),
-            tags: this.getTags(evt.target),
-            path: finder(evt.target)
-        });
+        }, evt.target);
     }
 
     handleElementClick(evt) {
         this.pushEvent("click", {
             x: evt.pageX,
             y: evt.pageY,
-            elementTags: this.getTags(evt.target, true),
-            tags: this.getTags(evt.target),
-            path: finder(evt.target)
-        });
+        }, evt.target);
 
         //Check if this was a navigation click
 
         if(evt.target.matches("[data-link]")) {
             let url = evt.target.getAttribute("data-link");
             this.pushEvent("navigation", {
-                elementTags: this.getTags(evt.target, true),
-                tags: this.getTags(evt.target),
-                path: finder(evt.target),
                 url: url
-            });
+            }, evt.target);
         }
     }
 
@@ -474,20 +485,14 @@ class UberTracker {
         this.pushEvent("pointerdown", {
             x: evt.pageX,
             y: evt.pageY,
-            elementTags: this.getTags(evt.target, true),
-            tags: this.getTags(evt.target),
-            path: finder(evt.target)
-        });
+        }, evt.target);
     }
 
     handleElementUp(evt) {
         this.pushEvent("pointerup", {
             x: evt.pageX,
             y: evt.pageY,
-            elementTags: this.getTags(evt.target, true),
-            tags: this.getTags(evt.target),
-            path: finder(evt.target)
-        });
+        }, evt.target);
     }
     handleWindowFocus(evt) {
         this.pushEvent("windowfocus", {
@@ -501,18 +506,12 @@ class UberTracker {
 
     handleElementFocus(evt) {
         this.pushEvent("elementfocus", {
-            elementTags: this.getTags(evt.target, true),
-            tags: this.getTags(evt.target),
-            path: finder(evt.target)
-        });
+        }, evt.target);
     }
 
     handleElementBlur(evt) {
         this.pushEvent("elementblur", {
-            elementTags: this.getTags(evt.target, true),
-            tags: this.getTags(evt.target),
-            path: finder(evt.target)
-        });
+        }, evt.target);
     }
 
     handleWindowResize(evt) {
