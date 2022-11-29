@@ -342,6 +342,8 @@ class UberTracker {
         }, false);
 
         window.addEventListener("beforeunload", (evt)=>{
+            self.pushEvent("unload", {});
+
             this.postEvents().then(()=>{
             });
         });
@@ -521,6 +523,18 @@ class UberTracker {
             tags: this.getTags(evt.target),
             path: finder(evt.target)
         });
+
+        //Check if this was a navigation click
+
+        if(evt.target.matches("[data-link]")) {
+            let url = evt.target.getAttribute("data-link");
+            this.pushEvent("navigation", {
+                elementTags: this.getTags(evt.target, true),
+                tags: this.getTags(evt.target),
+                path: finder(evt.target),
+                url: url
+            });
+        }
     }
 
     handleElementDown(evt) {
