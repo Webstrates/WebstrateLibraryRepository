@@ -471,11 +471,25 @@ class UberTracker {
         }, evt.target);
 
         //Check if this was a navigation click
-
         if(evt.target.matches("[data-link]")) {
             let url = evt.target.getAttribute("data-link");
+            let target = evt.target.getAttribute("target");
             this.pushEvent("navigation", {
-                url: url
+                url: url,
+                target: target
+            }, evt.target);
+        } else if(evt.target.matches("a")) {
+            let url = evt.target.getAttribute("href");
+            let target = evt.target.getAttribute("target");
+
+            if(url == null || url.trim().length === 0 || url.trim() === "#") {
+                console.log("Skipping navigation based on url:", url);
+                return;
+            }
+
+            this.pushEvent("navigation", {
+                url: url,
+                target: target
             }, evt.target);
         }
     }
