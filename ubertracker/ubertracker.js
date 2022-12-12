@@ -470,17 +470,21 @@ class UberTracker {
             y: evt.pageY,
         }, evt.target);
 
+        this.checkForNavitation(evt.target);
+    }
+
+    checkForNavigation(elm) {
         //Check if this was a navigation click
-        if(evt.target.matches("[data-link]")) {
-            let url = evt.target.getAttribute("data-link");
-            let target = evt.target.getAttribute("target");
+        if(elm.matches("[data-link]")) {
+            let url = elm.getAttribute("data-link");
+            let target = elm.getAttribute("target");
             this.pushEvent("navigation", {
                 url: url,
                 target: target
-            }, evt.target);
-        } else if(evt.target.matches("a")) {
-            let url = evt.target.getAttribute("href");
-            let target = evt.target.getAttribute("target");
+            }, elm);
+        } else if(elm.matches("a")) {
+            let url = elm.getAttribute("href");
+            let target = elm.getAttribute("target");
 
             if(url == null || url.trim().length === 0 || url.trim() === "#") {
                 console.log("Skipping navigation based on url:", url);
@@ -490,7 +494,18 @@ class UberTracker {
             this.pushEvent("navigation", {
                 url: url,
                 target: target
-            }, evt.target);
+            }, elm);
+        } else {
+            //Check if any parent has data-link
+            let dataLinkParent = elm.closest("[data-link]");
+            if(dataLinkParent != null) {
+                checkForNavigation(dataLinkParent);
+            } else {
+                let aParent = elm.closest("a");
+                if(aParent != null) {
+                    checkForNavigation(aParent);
+                }
+            }
         }
     }
 
