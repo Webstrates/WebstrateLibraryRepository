@@ -470,7 +470,7 @@ class UberTracker {
             y: evt.pageY,
         }, evt.target);
 
-        this.checkForNavitation(evt.target);
+        this.checkForNavigation(evt.target);
     }
 
     checkForNavigation(elm) {
