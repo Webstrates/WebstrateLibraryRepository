@@ -567,11 +567,11 @@ class UberTracker {
             //Check if any parent has data-link
             let dataLinkParent = elm.closest("[data-link]");
             if(dataLinkParent != null) {
-                checkForNavigation(dataLinkParent);
+                this.checkForNavigation(dataLinkParent);
             } else {
                 let aParent = elm.closest("a");
                 if(aParent != null) {
-                    checkForNavigation(aParent);
+                    this.checkForNavigation(aParent);
                 }
             }
         }
