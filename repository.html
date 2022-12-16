@@ -196,7 +196,11 @@
             <wpm-package id="fingerprintjs">
                 <script type="descriptor" src="fingerprintjs/descriptor.json"></script>
                 <script type="disabled">
-                    await wpm.requireExternal('https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3.3.4/dist/fp.min.js');
+                    try {
+                        await wpm.requireExternal('https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3.3.6/dist/fp.min.js');
+                    } catch(e) {
+                        await wpm.requireExternal('https://libraries.projects.cavi.au.dk/javascript/fingerprinting/fp.min.js');
+                    }
                 </script>  
             </wpm-package>
             <wpm-package id="nouislider">
