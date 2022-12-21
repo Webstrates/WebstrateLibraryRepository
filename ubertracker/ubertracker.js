@@ -209,7 +209,7 @@ class UberTracker {
         });
     }
 
-    async postEvents() {
+    postEvents() {
         if(this.events.length === 0) {
             return;
         }
