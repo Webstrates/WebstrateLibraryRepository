@@ -1,0 +1,8 @@
+{
+    "description": "Matrix Client for Webstrates",
+    "dependencies": [],
+    "assets": [],
+    "version": "23.2.0",
+    "license": "Apache 2.0",
+    "documentationLink": "https://github.com/matrix-org/matrix-js-sdk"
+}

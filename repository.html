@@ -757,6 +757,14 @@
                     await wpm.requireExternal("https://unpkg.com/mathjs@9.4.3/lib/browser/math.js");
                 </script>
             </wpm-package>
+            <wpm-package id="matrix-js-sdk">
+                <script type="descriptor" src="matrix-js-sdk/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/matrix-js-sdk/23.2.0/browser-matrix.min.js");
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/matrix-js-sdk/23.2.0/olm.js");
+                </script>
+                <script src="matrix-js-sdk/MatrixHelper.js" type="disabled"></script>                
+            </wpm-package>            
             <wpm-package id="potpack">
                 <script type="descriptor" src="potpack/descriptor.json"></script>
                 <script type="disabled">
