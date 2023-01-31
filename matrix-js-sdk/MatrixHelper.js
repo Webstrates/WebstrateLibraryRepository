@@ -1,5 +1,6 @@
 let getStorage = function getStorage(name, notSetValue){
     let data = localStorage.getItem("matrixHelper."+name);
+    if (data===null) return notSetValue;
     try {
         if (data) data = JSON.parse(data);
         return data;
@@ -17,10 +18,12 @@ class MatrixHelper {
         // TODO: Check if page has a remembered login
         let logins = getStorage("logins");
 
-        if (false){
+        let hasRememberedLogin = false;
+
+        if (hasRememberedLogin){
             // TODO: Use remembered login for this page
             return;
-        } else {
+        } else if (logins && logins.length>0) {
             // TODO: Show selector
             let chosenLogin = logins[0]; // STUB: Pick the first one
             let device = getStorage("logins."+chosenLogin.userId);
@@ -31,6 +34,8 @@ class MatrixHelper {
             }
 
             return device;
+        } else {
+            return null;
         }
     }
 
@@ -104,17 +109,15 @@ class MatrixHelper {
         await client.initCrypto();
 
         // Everyone is known and verified
-        client.on('RoomMemberEvent.Membership', async (message, room, toStartOfTimeline) => {
+        client.on('Room.timeline', async (message, room, toStartOfTimeline) => {
             // STUB: Don't do this all the time!
-            console.log("Setting devices known+verified")
-
             await client.exportRoomKeys();    
             const e2eMembers = await room.getEncryptionTargetMembers();
             for (const member of e2eMembers) {
                 const devices = client.getStoredDevicesForUser(member.userId);
                 for (const device of devices) {
-                    await client.setDeviceKnown(member.userId, device.deviceId, true);
-                    await client.setDeviceVerified(member.userId, device.deviceId, true);
+                    if (!device.known) await client.setDeviceKnown(member.userId, device.deviceId, true);
+                    if (!device.verified) await client.setDeviceVerified(member.userId, device.deviceId, true);
                 }
             }    
         });        
