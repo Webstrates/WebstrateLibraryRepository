@@ -2468,13 +2468,13 @@ class MatrixHelper {
         if (hasRememberedLogin){
             // TODO: Use remembered login for this page
             return;
-        } else if (logins && logins.length>0) {
+        } else if (logins?.length>0) {
             // TODO: Show selector
             let chosenLogin = logins[0]; // STUB: Pick the first one
             let device = getStorage("logins."+chosenLogin.userId);
 
             // Null sessions?
-            if (device && device.deviceToImport && device.deviceToImport.olmDevice && device.deviceToImport.olmDevice.sessions){
+            if (device?.deviceToImport?.olmDevice?.sessions){
                 device.deviceToImport.olmDevice.sessions = device.deviceToImport.olmDevice.sessions.filter(function(val) { return val !== null; });
             }
 
@@ -2509,7 +2509,7 @@ class MatrixHelper {
 
         // Wait for verification from another source
         client.on("crypto.verification.request", function (event) {
-            console.log("Got verification requst");
+            console.log("Got verification request:", event);
             event.accept();
             event.on('change', async function () {
                 console.log("VerificationRequest.change", event.phase);
