@@ -185,10 +185,7 @@ let showAccountSelector = function showAccountSelector(){
                 </div>
                 <div id="matrix-reloaded">
                     <div style="text-align:center;color:darkgreen;font-size:4rem">✓</div>
-                    Account added!
-                    <p>When you reload, the account can be selected.</p>
-                    <p>Hint: You can skip the account selection dialog entirely by picking an account and typing
-                    <code>matrixHelper.rememberAccountOnThisPage()</code> in the console afterwards.
+                    Account added!                    
                 </div>        
             </div>
             <p style="font-size: 0.8rem;opacity: 0.5;margin-bottom: 0;">Warning: Logging in allows all webstrates on this server to (ab)use your account on this device</p>
@@ -229,9 +226,14 @@ let showAccountSelector = function showAccountSelector(){
                     popup.querySelector(".active").setAttribute("class", "flipped");
                     popup.querySelector("#matrix-verification").setAttribute("class", "active");
                 },
-                verificationCompleted: ()=>{
+                verificationCompleted: (login)=>{
                     popup.querySelector(".active").setAttribute("class", "flipped");
                     popup.querySelector("#matrix-reloaded").setAttribute("class", "active");
+                    
+                    setTimeout(()=>{
+                        popup.remove();
+                        resolve(login);
+                    }, 3000);
                 }
             }
             let login = matrixHelper.login(server, user, password, callbacks);
@@ -270,7 +272,6 @@ class MatrixHelper {
             window.matrixHelper.client.stopClient();
         }
         window.matrixHelper.client = matrixcs.createClient(login); //TODO: actually use the overrides
-        await window.matrixHelper.sendEncryptedToEveryone(window.matrixHelper.client); // TODO: This should be configurable
         return window.matrixHelper.client;
     }
 
@@ -323,9 +324,10 @@ class MatrixHelper {
                     setTimeout(async function () {
                         let exportedDevice = await client.exportDevice();
                         let logins = getStorage("logins", []);
-                        logins.push({
+                        let login = {
                             userId: details.user_id
-                        });
+                        };
+                        logins.push(login);
                         setStorage("logins", logins);
 
                         // Save device
@@ -334,7 +336,7 @@ class MatrixHelper {
                             baseUrl: url,
                             accessToken: details.access_token
                         });
-                        if (callbacks.verificationCompleted) callbacks.verificationCompleted();
+                        if (callbacks.verificationCompleted) callbacks.verificationCompleted(login);
                     },2000);
                 }
             });
@@ -362,6 +364,10 @@ class MatrixHelper {
                 }
             }    
         });        
+    }
+    
+    static async rememberAccount(){
+        
     }
 }
 
