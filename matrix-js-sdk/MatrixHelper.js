@@ -243,25 +243,35 @@ let showAccountSelector = function showAccountSelector(){
 };
 
 class MatrixHelper {
-    static async requestLogin(){
-        console.log("Requesting Matrix account");
+    static async createClient(overrides={}){
+        console.log("Requesting Matrix client", overrides);
         
-        // TODO: Check if page has a remembered login
-        let hasRememberedLogin = false;
-        if (hasRememberedLogin){
-            // TODO: Use remembered login for this page            
-        }        
+        if (!window.matrixHelper.chosenLogin){
+            // TODO: Check if page has a remembered login
+            let hasRememberedLogin = false;
+            if (hasRememberedLogin){
+                // TODO: Use remembered login for this page            
+            }        
+
+            // Pick an account
+            window.matrixHelper.chosenLogin = await showAccountSelector();
+        }
         
-        // Pick an account
-        let chosenLogin = await showAccountSelector();
-        let device = getStorage("logins."+chosenLogin.userId);
+        let login = getStorage("logins."+window.matrixHelper.chosenLogin.userId);
         
         // Null sessions?
-        if (device?.deviceToImport?.olmDevice?.sessions){
-            device.deviceToImport.olmDevice.sessions = device.deviceToImport.olmDevice.sessions.filter(function(val) { return val !== null; });
+        if (login?.deviceToImport?.olmDevice?.sessions){
+            login.deviceToImport.olmDevice.sessions = login.deviceToImport.olmDevice.sessions.filter(function(val) { return val !== null; });
         }
-
-        return device;
+        
+        // Shutdown previous client (if any)        
+        if (window.matrixHelper.client){
+            console.log("Shutting down previous matrixHelper client...");
+            window.matrixHelper.client.stopClient();
+        }
+        window.matrixHelper.client = matrixcs.createClient(login); //TODO: actually use the overrides
+        await window.matrixHelper.sendEncryptedToEveryone(window.matrixHelper.client); // TODO: This should be configurable
+        return window.matrixHelper.client;
     }
 
     static async login(url, username, password, callbacks={}){
