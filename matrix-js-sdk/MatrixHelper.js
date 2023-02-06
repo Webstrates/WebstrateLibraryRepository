@@ -191,18 +191,20 @@ let showAccountSelector = function showAccountSelector(){
             <p style="font-size: 0.8rem;opacity: 0.5;margin-bottom: 0;">Warning: Logging in allows all webstrates on this server to (ab)use your account on this device</p>
         </matrixlogin>`;
         
-        let logins = getStorage("logins");
-        logins.forEach((login)=>{
-            let user = login.userId.match("@(.*):")[1];
-            let server = login.userId.substr(login.userId.indexOf(":")+1);
-            let node = document.createElement("li");
-            node.innerHTML = user+"<div class='server'>"+server+"</div>";
-            node.addEventListener("click", ()=>{
-                popup.remove();
-                resolve(login);
+        let logins = getStorage("logins", []);
+        if (logins){
+            logins.forEach((login)=>{
+                let user = login.userId.match("@(.*):")[1];
+                let server = login.userId.substr(login.userId.indexOf(":")+1);
+                let node = document.createElement("li");
+                node.innerHTML = user+"<div class='server'>"+server+"</div>";
+                node.addEventListener("click", ()=>{
+                    popup.remove();
+                    resolve(login);
+                });
+                popup.querySelector("ul").prepend(node);
             });
-            popup.querySelector("ul").prepend(node);
-        });
+        }
 
         document.body.appendChild(popup);
         popup.querySelector("matrixlogin .matrix-new-login").addEventListener("click", ()=>{
