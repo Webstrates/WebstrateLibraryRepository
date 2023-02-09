@@ -694,6 +694,11 @@ class UberTracker {
             if(event.type === "windowresize") {
                 maxWidth = Math.max(maxWidth, event.data.width);
                 maxHeight = Math.max(maxHeight, event.data.height);
+            } else {
+                if(event.data.x) {
+                    maxHeight = Math.max(maxHeight, event.data.y);
+                    maxWidth = Math.max(maxWidth, event.data.x);
+                }
             }
         });
 
