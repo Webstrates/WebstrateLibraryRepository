@@ -1,0 +1,9 @@
+{
+    "description": "MicroPatch JSON object patcher",
+    "dependencies": [
+    ],
+    "assets": [],
+    "version": "1.0.0",
+    "license": "MIT",
+    "documentationLink": "https://github.com/AsyncBanana/micropatch"
+}

@@ -62,6 +62,12 @@
                     window.microdiff = {diff:module.default};
                 </script>
             </wpm-package>              
+            <wpm-package id="micropatch">
+                <script type="descriptor" src="micropatch/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/micropatch/1.0.0/micropatch.js");
+                </script>
+            </wpm-package>               
             <wpm-package id="Awesomplete">
                 <script type="descriptor" src="Awesomplete/descriptor.json"></script>
                 <script type="disabled">
