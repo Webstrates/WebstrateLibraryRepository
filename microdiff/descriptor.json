@@ -1,0 +1,9 @@
+{
+    "description": "MicroDiff JSON object differ",
+    "dependencies": [
+    ],
+    "assets": [],
+    "version": "1.3.2",
+    "license": "MIT",
+    "documentationLink": "https://github.com/AsyncBanana/microdiff"
+}
