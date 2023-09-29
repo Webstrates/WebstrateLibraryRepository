@@ -886,6 +886,15 @@ window.WPMv2.installAsset = async function installAsset(destination, source){
 
                 <script type="disabled">
                     await WPMv2.installAsset("coi-serviceworker-v1.7.js", "https://libraries.projects.cavi.au.dk/javascript/coi-serviceworker/1.7/coi-serviceworker.min.js");
+
+                    window.coi = {
+                        shouldRegister: () => true,
+                        shouldDeregister: () => false,
+                        coepCredentialless: () => true,
+                        doReload: () => {console.log("COI needs reload");window.coiNeedsReload=true},
+                        quiet: false
+                    }    
+    
                     var s = document.createElement('script');
                     s.src = 'coi-serviceworker-v1.7.js';
                     document.body.appendChild(s);
