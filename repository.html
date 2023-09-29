@@ -29,6 +29,15 @@
                 <script type="descriptor" src="AssetFetcher/descriptor.json"></script>
                 <script type="disabled" src="AssetFetcher/assetfetcher.js"></script>
             </wpm-package>
+            <wpm-package id="coi-serviceworker">
+                <script type="descriptor" src="coi-serviceworker/descriptor.json"></script>
+                <script type="disabled">
+                    await WPMv2.installAsset("coi-serviceworker-v1.7.js", "https://libraries.projects.cavi.au.dk/javascript/coi-serviceworker/1.7/coi-serviceworker.min.js");
+                    var s = document.createElement('script');
+                    s.src = 'coi-serviceworker-v1.7.js';
+                    document.body.appendChild(s);
+                </script>
+            </wpm-package>            
             <wpm-package id="CaviDraggableHTML5">
                 <script type="descriptor" src="CaviDraggableHTML5/descriptor.json"></script>
                 <script type="disabled">
@@ -385,9 +394,9 @@
             <wpm-package id="material-design-components">
                 <script type="descriptor" src="material-design/components-descriptor.json"></script>
                 <script type="disabled">
-                    await wpm.requireExternal("https://unpkg.com/material-components-web@14.0.0/dist/material-components-web.min.js");
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/material-components-web/14.0.0/material-components-web.min.js");
                 </script>
-                <link href="https://unpkg.com/material-components-web@7.0.0/dist/material-components-web.min.css" rel="stylesheet" type="text/css"/>
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/7.0.0/material-components-web.min.css" rel="stylesheet" type="text/css"/>
             </wpm-package>
             <wpm-package id="material-design-icons">
                 <script type="descriptor" src="material-design/icons-descriptor.json"></script>

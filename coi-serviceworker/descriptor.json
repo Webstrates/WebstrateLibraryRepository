@@ -1,0 +1,9 @@
+{
+    "description": "Cross-Origin Isolation Service Worker",
+    "dependencies": [
+        "#AssetFetcher"
+    ],
+    "license": "MIT",
+    "assets": [],
+    "version": "0.1.7"
+}

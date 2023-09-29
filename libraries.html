@@ -846,27 +846,51 @@ window.UberTracker = UberTracker;
                 <script id="assetfetcher-script" type="disabled">
 window.WPMv2.installAsset = async function installAsset(destination, source){
     if(typeof webstrate  !== "undefined") {
-        if (!webstrate.assets.find(a=>a.fileName==destination)){
+        let asset = webstrate.assets.findLast(a=>a.fileName==destination);
+        if ((!asset) || (asset.deletedAt)){
             console.log("Initial fetch of asset "+destination+" from "+source+" ...");
             let formData = new FormData();
             
             let response = await fetch(source, {credentials: 'same-origin'});
-            let blob = await response.blob();            
+            let blob = await response.blob();          
             formData.append("file", blob, destination);
             await fetch(location.pathname, {
                 body: formData,
                 credentials: 'same-origin',
                 method: "post"
             });            
+            return true;
         }
     } else {
         console.log("AssetFetcher: Don't know how to fetch asset "+destination+" when not using webstrates, please manually download it from "+source);
     }
+    return false;
 }
 
 </script>
 
             </wpm-package>
+            <wpm-package id="coi-serviceworker">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Cross-Origin Isolation Service Worker",
+    "dependencies": [
+        "#AssetFetcher"
+    ],
+    "license": "MIT",
+    "assets": [],
+    "version": "0.1.7"
+}
+
+</script>
+
+                <script type="disabled">
+                    await WPMv2.installAsset("coi-serviceworker-v1.7.js", "https://libraries.projects.cavi.au.dk/javascript/coi-serviceworker/1.7/coi-serviceworker.min.js");
+                    var s = document.createElement('script');
+                    s.src = 'coi-serviceworker-v1.7.js';
+                    document.body.appendChild(s);
+                </script>
+            </wpm-package>            
             <wpm-package id="CaviDraggableHTML5">
                 <script id="descriptor-script" type="descriptor">
 {
@@ -1778,9 +1802,9 @@ window.WPMv2.installAsset = async function installAsset(destination, source){
 </script>
 
                 <script type="disabled">
-                    await wpm.requireExternal("https://unpkg.com/material-components-web@14.0.0/dist/material-components-web.min.js");
+                    await wpm.requireExternal("https://cdnjs.cloudflare.com/ajax/libs/material-components-web/14.0.0/material-components-web.min.js");
                 </script>
-                <link href="https://unpkg.com/material-components-web@7.0.0/dist/material-components-web.min.css" rel="stylesheet" type="text/css"/>
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/7.0.0/material-components-web.min.css" rel="stylesheet" type="text/css"/>
             </wpm-package>
             <wpm-package id="material-design-icons">
                 <script id="icons-descriptor-script" type="descriptor">
