@@ -1,0 +1,9 @@
+{
+    "description": "Babel transpiler",
+    "dependencies": [
+    ],
+    "assets": [],
+    "version": "7.23.10",
+    "license": "MIT",
+    "documentationLink": "https://github.com/babel/babel"
+}

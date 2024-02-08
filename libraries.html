@@ -943,6 +943,24 @@ window.WPMv2.installAsset = async function installAsset(destination, source){
                     await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/CaviTouch/1.4/CaviTouch.min.js");
                 </script>
             </wpm-package>   
+            <wpm-package id="babel">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "Babel transpiler",
+    "dependencies": [
+    ],
+    "assets": [],
+    "version": "7.23.10",
+    "license": "MIT",
+    "documentationLink": "https://github.com/babel/babel"
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("https://unpkg.com/@babel/standalone@7.23.10/babel.min.js");
+                </script>
+            </wpm-package>              
             <wpm-package id="Rangy">
                 <script id="descriptor-script" type="descriptor">
 {
