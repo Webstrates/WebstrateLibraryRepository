@@ -2,9 +2,10 @@
     "description": "UberTracker",
     "dependencies": ["cQuery", "chrono", "svgjs", "finder"],
     "assets": [],
-    "version": "1.0",
+    "version": "1.1",
     "license": "Apache 2.0",
     "changelog": {
-        "1.0": "Initial version"
+        "1.0": "Initial version",
+        "1.1": "Added URL rewrites for A href tags"
     }
 }
