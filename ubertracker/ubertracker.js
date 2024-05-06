@@ -8,7 +8,7 @@ class UberTracker {
             eventPushInterval: 5000,
             apmUpdateInterval: 5000,
             speedUpdateInterval: 5000,
-            pointerMoveThrottleInterval: 250,
+            pointerMoveThrottleInterval: 200,
             trackerUrl: "https://cotinker.projects.cavi.au.dk/ubertracker.php"
         };
 
@@ -51,7 +51,7 @@ class UberTracker {
 
         await this.clientDataPromise;
 
-        return self.startTrackingSession().then((sessionData)=>{
+        return self.startTrackingSubsession().then((sessionData)=>{
             self.sessionData = sessionData;
             self.startEventPusher();
             console.log("UberTracker ready:", sessionData);
@@ -198,7 +198,7 @@ class UberTracker {
         });
     }
 
-    async startTrackingSession() {
+    async startTrackingSubsession() {
         let data = {
             url: location.href,
             time: Date.now()
@@ -318,7 +318,7 @@ class UberTracker {
                 delete elm.intersectionJustAdded;
                 tagVisibleObserver.unobserve(elm);
             }
-        })
+        });    
     }
 
     getTags(element, skipParents=false) {
@@ -470,10 +470,10 @@ class UberTracker {
             y: evt.pageY,
         }, evt.target);
 
-        this.checkForNavigation(evt.target);
+        this.possibleNavigation(evt.target, evt);
     }
 
-    checkForNavigation(elm) {
+    possibleNavigation(elm, evt) {
         //Check if this was a navigation click
         if(elm.matches("[data-link]")) {
             let url = elm.getAttribute("data-link");
@@ -495,6 +495,26 @@ class UberTracker {
                 url: url,
                 target: target
             }, elm);
+
+            // Try to add crossdomain key
+            evt.preventDefault();
+            let isRelative = !(url.startsWith("http:") || url.startsWith("https:"));
+            let navigationTarget;
+            if (isRelative){
+                navigationTarget = new URL(url, location.origin+location.pathname);
+            } else {
+                navigationTarget = new URL(url);
+            }
+            this.generateCrossDomainKey(navigationTarget.origin).then((key)=>{
+                navigationTarget.searchParams.set("_utrack", key.key);
+                if (target){
+                    console.log("Navigation with target");
+                    window.open(navigationTarget, target);
+                } else {
+                    console.log("Navigation without target");
+                    location = navigationTarget;
+                }
+            });
         } else {
             //Check if any parent has data-link
             let dataLinkParent = elm.closest("[data-link]");
