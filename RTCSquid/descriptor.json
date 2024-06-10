@@ -1,0 +1,9 @@
+{
+    "description": "A small, WebRTC coordinator service",
+    "dependencies": [],
+    "assets": [],
+    "version": "0.9",
+    "changelog": {
+        "0.9": "Initial version"
+    }
+}

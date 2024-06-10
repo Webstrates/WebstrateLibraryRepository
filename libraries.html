@@ -1468,6 +1468,24 @@ window.WPMv2.installAsset = async function installAsset(destination, source){
                     await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/anchorme/anchorme.min.js");
                 </script>
             </wpm-package>
+            <wpm-package id="RTCSquid">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "A small, WebRTC coordinator service",
+    "dependencies": [],
+    "assets": [],
+    "version": "0.9",
+    "changelog": {
+        "0.9": "Initial version"
+    }
+}
+
+</script>
+
+                <script type="disabled">
+                    await wpm.requireExternal("http://stream.cavi.au.dk/rtcsquid/rtcsquid.js");
+                </script>
+            </wpm-package>            
             <wpm-package id="fingerprintjs">
                 <script id="descriptor-script" type="descriptor">
 {
