@@ -105,6 +105,18 @@ class UberTracker {
         let params = new URLSearchParams(location.search);
         let utrack = params.get("_utrack");
 
+        window.addEventListener("message", (event)=>{
+            try {
+                if (event.data?.ubertrackercommand==="scroll"){
+                    // STUB: Assume document element
+                    let element = window;
+                    element.scrollTo(event.data.x, event.data.y);
+                }
+            } catch (ex){
+                console.log("UbertTrack message exception ignored", ex);
+            }
+        })
+
         this.getClientSession(utrack).then((clientData)=>{
             self.clientData = clientData;
 
