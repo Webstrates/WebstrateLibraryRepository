@@ -9,6 +9,7 @@ class UberTracker {
             apmUpdateInterval: 5000,
             speedUpdateInterval: 5000,
             pointerMoveThrottleInterval: 200,
+            scrollThrottleInterval: 200,
             trackerUrl: "https://cotinker.projects.cavi.au.dk/ubertracker.php"
         };
 
@@ -24,6 +25,7 @@ class UberTracker {
         });
 
         this.lastPointerMove = 0;
+        this.lastScroll = 0;
 
         this.sessionData = null;
         this.clientData = null;
@@ -289,6 +291,13 @@ class UberTracker {
         window.addEventListener("pointermove", (evt)=>{
             self.handleMove(evt);
         });
+        
+        document.addEventListener("scroll", (ev)=>{
+            self.handleScroll(document.documentElement, window.scrollX, window.scrollY);
+        });        
+        document.addEventListener("scrollend", (ev)=>{
+            self.handleScroll(document.documentElement, window.scrollX, window.scrollY, true);
+        });        
 
         let tagVisibleObserver = new IntersectionObserver((entries)=>{
             entries.forEach((entry)=>{
@@ -443,6 +452,20 @@ class UberTracker {
         this.moveListeners.forEach((listener)=>{
             listener(pos);
         });
+    }
+    
+    handleScroll(el,x,y, force=false){
+        let pos = {
+            x: x,
+            y: y
+        };
+
+        let now = Date.now();
+
+        if(force || now - this.lastScroll > this.options.scrollThrottleInterval) {
+            this.pushEvent("scroll", pos, el);
+            this.lastScroll = now;
+        }        
     }
 
     handleElementKeyup(evt) {
