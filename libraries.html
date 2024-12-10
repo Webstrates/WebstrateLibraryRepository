@@ -991,26 +991,32 @@ window.WPMv2.installAsset = async function installAsset(destination, source){
 </script>
 
                 <script type="disabled">
-                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/opencv/4.5.0/opencv.js");
                     await new Promise(async (resolve, reject)=>{
-                        if (cv.getBuildInformation) {
-                            console.log(cv.getBuildInformation());
-                            resolve();
-                        } else {
-                            // WASM
-                            if (cv instanceof Promise) {
-                                cv = await cv;
-                                console.log(cv.getBuildInformation());
+                        const OPENCV_URL = "https://libraries.projects.cavi.au.dk/javascript/opencv/4.5.0/opencv.js";
+                        let script = document.createElement('script');
+                        script.setAttribute('async', '');
+                        script.setAttribute('type', 'text/javascript');
+                        script.addEventListener('load', async () => {
+                            if (cv.getBuildInformation) {
                                 resolve();
                             } else {
-                                cv['onRuntimeInitialized']=()=>{
-                                    console.log(cv.getBuildInformation());
+                                // WASM
+                                if (cv instanceof Promise) {
+                                    cv = await cv;
                                     resolve();
+                                } else {
+                                    cv['onRuntimeInitialized']=()=>{
+                                        resolve();
+                                    }
                                 }
-                            }
-                        }                                            
-                    });
-                    
+                            };
+                        });
+                        script.addEventListener('error', () => {
+                            reject('Failed to load ' + OPENCV_URL);
+                        });
+                        script.src = OPENCV_URL;
+                        let node = document.head.appendChild(script);                          
+                    });                    
                 </script>
             </wpm-package>            
             <wpm-package id="CaviTouch">
