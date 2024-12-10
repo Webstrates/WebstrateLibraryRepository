@@ -1,0 +1,9 @@
+{
+    "description": "OpenCV",
+    "dependencies": [
+    ],
+    "assets": [],
+    "version": "4.5.0",
+    "license": "MIT",
+    "documentationLink": "https://opencv.org/"
+}

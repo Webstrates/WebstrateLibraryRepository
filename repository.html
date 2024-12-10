@@ -53,6 +53,31 @@
                     await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/CaviDraggableHTML5/1.0/draggable.min.js");
                 </script>
             </wpm-package>
+            <wpm-package id="opencv">
+                <script type="descriptor" src="opencv/descriptor.json"></script>
+                <script type="disabled">
+                    await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/opencv/4.5.0/opencv.js");
+                    await new Promise(async (resolve, reject)=>{
+                        if (cv.getBuildInformation) {
+                            console.log(cv.getBuildInformation());
+                            resolve();
+                        } else {
+                            // WASM
+                            if (cv instanceof Promise) {
+                                cv = await cv;
+                                console.log(cv.getBuildInformation());
+                                resolve();
+                            } else {
+                                cv['onRuntimeInitialized']=()=>{
+                                    console.log(cv.getBuildInformation());
+                                    resolve();
+                                }
+                            }
+                        }                                            
+                    });
+                    
+                </script>
+            </wpm-package>            
             <wpm-package id="CaviTouch">
                 <script type="descriptor" src="CaviTouch/descriptor.json"></script>
                 <script type="disabled">
