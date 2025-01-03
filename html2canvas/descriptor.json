@@ -2,7 +2,7 @@
     "description": "A screengrabber in js using canvas elements",
     "dependencies": [],
     "assets": [],
-    "version": "1.0.0",
+    "version": "1.4.1",
     "license": "MIT",
     "documentationLink": "http://html2canvas.hertzen.com/"
 }
