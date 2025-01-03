@@ -58,30 +58,21 @@
                 <script type="disabled">
                     await new Promise(async (resolve, reject)=>{
                         const OPENCV_URL = "https://libraries.projects.cavi.au.dk/javascript/opencv/4.5.0/opencv.js";
-                        let script = document.createElement('script');
-                        script.setAttribute('async', '');
-                        script.setAttribute('type', 'text/javascript');
-                        script.addEventListener('load', async () => {
-                            if (cv.getBuildInformation) {
+                        let i = await wpm.requireExternal(OPENCV_URL);
+                        if (cv.getBuildInformation) {
+                            resolve();
+                        } else {
+                            // WASM
+                            if (cv instanceof Promise) {
+                                cv = await cv;
                                 resolve();
                             } else {
-                                // WASM
-                                if (cv instanceof Promise) {
-                                    cv = await cv;
+                                cv['onRuntimeInitialized']=()=>{
                                     resolve();
-                                } else {
-                                    cv['onRuntimeInitialized']=()=>{
-                                        resolve();
-                                    }
                                 }
-                            };
-                        });
-                        script.addEventListener('error', () => {
-                            reject('Failed to load ' + OPENCV_URL);
-                        });
-                        script.src = OPENCV_URL;
-                        let node = document.head.appendChild(script);                          
-                    });                    
+                            }
+                        };
+                    });             
                 </script>
             </wpm-package>            
             <wpm-package id="CaviTouch">
