@@ -1,0 +1,8 @@
+{
+    "description": "A PDF file writer",
+    "dependencies": [],
+    "assets": [],
+    "version": "2.5.2",
+    "license": "MIT",
+    "documentationLink": "https://github.com/MrRio/jsPDF"
+}

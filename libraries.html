@@ -2242,6 +2242,23 @@ window.WPMv2.installAsset = async function installAsset(destination, source){
                     await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/html2canvas/1.4.1/html2canvas.min.js");
                 </script>
             </wpm-package>
+            <wpm-package id="jspdf">
+                <script id="descriptor-script" type="descriptor">
+{
+    "description": "A PDF file writer",
+    "dependencies": [],
+    "assets": [],
+    "version": "2.5.2",
+    "license": "MIT",
+    "documentationLink": "https://github.com/MrRio/jsPDF"
+}
+
+</script>
+
+                <script type="disabled">
+                    window.jspdf = await import("https://libraries.projects.cavi.au.dk/javascript/jspdf/2.5.2/jspdf.es.min.js");
+                </script>
+            </wpm-package>
             <wpm-package id="p5js">
                 <script id="descriptor-script" type="descriptor">
 {

@@ -638,6 +638,12 @@
                     await wpm.requireExternal("https://libraries.projects.cavi.au.dk/javascript/html2canvas/1.4.1/html2canvas.min.js");
                 </script>
             </wpm-package>
+            <wpm-package id="jspdf">
+                <script type="descriptor" src="jspdf/descriptor.json"></script>
+                <script type="disabled">
+                    window.jspdf = await import("https://libraries.projects.cavi.au.dk/javascript/jspdf/2.5.2/jspdf.es.min.js");
+                </script>
+            </wpm-package>
             <wpm-package id="p5js">
                 <script type="descriptor" src="p5js/descriptor.json"></script>
                 <script type="disabled">
