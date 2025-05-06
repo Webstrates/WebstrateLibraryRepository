@@ -2,7 +2,7 @@
     "description": "A PDF file writer",
     "dependencies": [],
     "assets": [],
-    "version": "2.5.2",
+    "version": "3.0.1",
     "license": "MIT",
     "documentationLink": "https://github.com/MrRio/jsPDF"
 }
